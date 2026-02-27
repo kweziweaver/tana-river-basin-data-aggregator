@@ -4,13 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Colorado River Basin — Watershed Data</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     :root {
       --bg: #0a0f14;
       --surface: #111820;
+      --surface2: #16202c;
       --border: #1e2d3d;
       --text: #c9d8e8;
       --muted: #5a7a9a;
+      --faint: #2d3f52;
       --blue: #3b9eff;
       --teal: #1fc8c0;
       --amber: #f5a623;
@@ -26,47 +31,133 @@
       font-size: 14px;
       line-height: 1.6;
     }
+
+    /* Header */
     header {
       padding: 24px 32px 16px;
       border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 12px;
     }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .header-icon { color: var(--teal); flex-shrink: 0; }
     header h1 {
       font-size: 1.25rem;
       font-weight: 600;
       color: var(--teal);
       letter-spacing: -0.02em;
     }
-    header p {
+    header .subtitle {
       font-size: 0.8rem;
       color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
+    .subtitle i { width: 12px; height: 12px; }
     .updated {
       font-size: 0.75rem;
       color: var(--muted);
       text-align: right;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    main { padding: 24px 32px; max-width: 1200px; }
+
+    main { padding: 24px 32px; max-width: 1400px; }
     section { margin-bottom: 40px; }
+
+    /* Section headers */
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-head i { color: var(--muted); width: 14px; height: 14px; }
     h2 {
       font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--muted);
-      margin-bottom: 12px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
     }
+
+    /* Basin context */
+    .basin-context {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .basin-context .context-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .basin-context .context-label i { width: 12px; height: 12px; }
+    .highlight { color: var(--teal); font-weight: 600; }
+    .highlight-amber { color: var(--amber); font-weight: 600; }
+    .highlight-blue { color: var(--blue); font-weight: 600; }
+
+    /* Map */
+    #map {
+      width: 100%;
+      height: 420px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+    .map-legend {
+      display: flex;
+      gap: 20px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .map-legend span { display: flex; align-items: center; gap: 5px; }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .legend-dot.gauge { background: var(--blue); }
+    .legend-dot.reservoir { background: var(--amber); }
+    .legend-dot.snotel { background: var(--teal); opacity: 0.7; }
+
+    /* Leaflet popup overrides */
+    .leaflet-popup-content-wrapper {
+      background: var(--surface) !important;
+      color: var(--text) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 6px !important;
+      font-family: inherit !important;
+      font-size: 0.78rem !important;
+    }
+    .leaflet-popup-tip { background: var(--surface) !important; }
+    .popup-title { font-weight: 600; color: var(--blue); margin-bottom: 4px; }
+    .popup-val { color: var(--teal); font-weight: 600; }
 
     /* Reservoirs */
     .reservoir-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 16px;
     }
     .reservoir-card {
@@ -80,7 +171,11 @@
       font-weight: 600;
       margin-bottom: 12px;
       color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+    .reservoir-card h3 i { width: 16px; height: 16px; }
     .big-number {
       font-size: 2.2rem;
       font-weight: 700;
@@ -93,9 +188,6 @@
       font-size: 0.75rem;
       color: var(--muted);
       margin-bottom: 16px;
-    }
-    .fill-bar-wrap {
-      margin-bottom: 8px;
     }
     .fill-bar-track {
       height: 6px;
@@ -111,25 +203,37 @@
     }
     .fill-bar-fill.low { background: var(--amber); }
     .fill-bar-fill.critical { background: var(--red); }
-    .fill-label {
-      font-size: 0.72rem;
-      color: var(--muted);
+    .fill-ticks {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: var(--faint);
       margin-top: 4px;
+    }
+    .fill-pct {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 6px;
     }
     .reservoir-detail {
       font-size: 0.75rem;
       color: var(--muted);
-      margin-top: 12px;
-      padding-top: 12px;
+      margin-top: 14px;
+      padding-top: 14px;
       border-top: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
     }
+    .reservoir-detail i { width: 12px; height: 12px; flex-shrink: 0; margin-top: 2px; }
 
     /* Snowpack summary */
     .snowpack-summary {
       display: flex;
-      gap: 24px;
+      gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
     .stat-box {
       background: var(--surface);
@@ -137,7 +241,15 @@
       border-radius: 8px;
       padding: 16px 20px;
       min-width: 140px;
+      flex: 1;
     }
+    .stat-box .icon-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .stat-box .icon-row i { width: 14px; height: 14px; color: var(--muted); }
     .stat-box .val {
       font-size: 1.6rem;
       font-weight: 700;
@@ -150,13 +262,13 @@
       margin-top: 2px;
     }
 
-    /* Snowpack table */
-    .station-table {
+    /* Tables */
+    .data-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.8rem;
     }
-    .station-table th {
+    .data-table th {
       text-align: left;
       padding: 6px 10px;
       color: var(--muted);
@@ -166,99 +278,119 @@
       letter-spacing: 0.06em;
       border-bottom: 1px solid var(--border);
     }
-    .station-table td {
+    .data-table td {
       padding: 7px 10px;
       border-bottom: 1px solid rgba(30,45,61,0.6);
       color: var(--text);
     }
-    .station-table tr:hover td { background: var(--surface); }
+    .data-table tr:hover td { background: var(--surface); }
     .swe-chip {
       display: inline-block;
       padding: 2px 8px;
       border-radius: 4px;
       font-size: 0.72rem;
       font-weight: 600;
-      background: rgba(31,200,192,0.12);
-      color: var(--teal);
     }
-
-    /* Gauge table */
-    .gauge-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.8rem;
-    }
-    .gauge-table th {
-      text-align: left;
-      padding: 6px 10px;
-      color: var(--muted);
-      font-weight: 500;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      border-bottom: 1px solid var(--border);
-    }
-    .gauge-table td {
-      padding: 7px 10px;
-      border-bottom: 1px solid rgba(30,45,61,0.6);
-      color: var(--text);
-    }
-    .gauge-table tr:hover td { background: var(--surface); }
+    .swe-high { background: rgba(31,200,192,0.15); color: var(--teal); }
+    .swe-med  { background: rgba(59,158,255,0.12); color: var(--blue); }
+    .swe-low  { background: rgba(245,166,35,0.12); color: var(--amber); }
+    .swe-zero { background: rgba(90,122,154,0.1); color: var(--muted); }
     .flow-val { color: var(--blue); font-weight: 600; }
 
     .toggle-btn {
       background: none;
       border: 1px solid var(--border);
       color: var(--muted);
-      padding: 4px 12px;
+      padding: 5px 14px;
       border-radius: 4px;
       cursor: pointer;
       font-size: 0.75rem;
       margin-bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
+    .toggle-btn i { width: 12px; height: 12px; }
     .toggle-btn:hover { border-color: var(--blue); color: var(--blue); }
     .hidden { display: none; }
 
+    /* Footer */
     footer {
       padding: 24px 32px;
       border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: 0.75rem;
       display: flex;
-      gap: 16px;
+      gap: 20px;
       flex-wrap: wrap;
+      align-items: center;
     }
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--blue); }
+    footer .footer-item { display: flex; align-items: center; gap: 5px; }
+    footer .footer-item i { width: 12px; height: 12px; }
 
     .loading { color: var(--muted); padding: 40px; text-align: center; }
     .error { color: var(--red); padding: 16px; }
+
+    @media (max-width: 640px) {
+      header, main, footer { padding-left: 16px; padding-right: 16px; }
+      #map { height: 300px; }
+      .reservoir-grid { grid-template-columns: 1fr; }
+      .snowpack-summary { flex-direction: column; }
+      .stat-box { min-width: unset; }
+    }
   </style>
 </head>
 <body>
 
 <header>
   <div>
-    <h1>🌊 Colorado River Basin — Watershed Data</h1>
-    <p>Real-time stream gauges · Reservoir levels · Snowpack</p>
+    <div class="header-left">
+      <i data-lucide="waves" class="header-icon" style="width:24px;height:24px"></i>
+      <h1>Colorado River Basin</h1>
+    </div>
+    <div class="subtitle">
+      <i data-lucide="activity"></i>
+      <span>Real-time stream gauges</span>
+      <span style="color:var(--faint)">·</span>
+      <i data-lucide="droplets"></i>
+      <span>Reservoir levels</span>
+      <span style="color:var(--faint)">·</span>
+      <i data-lucide="snowflake"></i>
+      <span>Snowpack</span>
+    </div>
   </div>
-  <div class="updated" id="updated">Loading…</div>
+  <div class="updated" id="updated">
+    <i data-lucide="clock" style="width:12px;height:12px"></i>
+    <span>Loading...</span>
+  </div>
 </header>
 
 <main>
-  <div id="app"><div class="loading">Fetching watershed data…</div></div>
+  <div id="app"><div class="loading">Fetching watershed data...</div></div>
 </main>
 
 <footer>
-  <span>Data sources:
-    <a href="https://waterservices.usgs.gov/" target="_blank">USGS Water Services</a> ·
+  <div class="footer-item">
+    <i data-lucide="database"></i>
+    <span>Data:</span>
+    <a href="https://waterservices.usgs.gov/" target="_blank">USGS</a>
+    <span style="color:var(--faint)">·</span>
     <a href="https://wcc.sc.egov.usda.gov/awdbRestApi/swagger-ui/index.html" target="_blank">NRCS SNOTEL</a>
-  </span>
-  <span>Updated twice daily via GitHub Actions</span>
-  <span>
-    <a href="https://github.com/nou-techne/watershed-data-collection" target="_blank">Source code</a> ·
+  </div>
+  <div class="footer-item">
+    <i data-lucide="refresh-cw"></i>
+    <span>Updated twice daily</span>
+  </div>
+  <div class="footer-item">
+    <i data-lucide="github"></i>
+    <a href="https://github.com/nou-techne/watershed-data-collection" target="_blank">Source</a>
+  </div>
+  <div class="footer-item">
+    <i data-lucide="external-link"></i>
     <a href="https://owockibot.xyz/bounty/" target="_blank">owockibot bounty #237</a>
-  </span>
+  </div>
 </footer>
 
 <script>
@@ -268,15 +400,15 @@ async function load() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const d = await res.json();
     render(d);
+    lucide.createIcons();
   } catch (e) {
     document.getElementById('app').innerHTML =
-      `<div class="error">Failed to load data.json: ${e.message}.<br>
-       Run <code>python src/aggregate.py</code> to generate it.</div>`;
+      `<div class="error">Failed to load data: ${e.message}</div>`;
   }
 }
 
 function fmt(v, digits=0) {
-  if (v === null || v === undefined) return '—';
+  if (v === null || v === undefined) return '\u2014';
   return Number(v).toLocaleString('en-US', { maximumFractionDigits: digits });
 }
 
@@ -287,8 +419,16 @@ function fillClass(pct) {
   return '';
 }
 
+function sweClass(v) {
+  if (v === null || v === undefined) return 'swe-zero';
+  if (v >= 15) return 'swe-high';
+  if (v >= 5)  return 'swe-med';
+  if (v > 0)   return 'swe-low';
+  return 'swe-zero';
+}
+
 function ago(isoStr) {
-  if (!isoStr) return '—';
+  if (!isoStr) return '\u2014';
   const diff = Date.now() - new Date(isoStr).getTime();
   const h = Math.floor(diff / 3600000);
   if (h < 1) return `${Math.floor(diff / 60000)}m ago`;
@@ -296,18 +436,135 @@ function ago(isoStr) {
   return `${Math.floor(h/24)}d ago`;
 }
 
+function basinContext(d) {
+  const r = d.reservoirs[0];
+  const sp = d.snowpack_summary;
+  const leesFerry = d.gauges.find(g => g.site_id === '09380000');
+  const leesQ = leesFerry?.parameters?.['00060']?.value;
+
+  let powellNote = '';
+  if (r) {
+    const pct = r.fill_pct;
+    if (pct < 30) powellNote = `Lake Powell is at <span class="highlight-amber">${fmt(r.elevation_ft, 1)} ft</span> \u2014 <span class="highlight-amber">${fmt(pct, 1)}%</span> of usable capacity. This is critically low; hydropower generation at Glen Canyon Dam requires minimum ~3,490 ft.`;
+    else if (pct < 50) powellNote = `Lake Powell is at <span class="highlight-amber">${fmt(r.elevation_ft, 1)} ft</span> \u2014 <span class="highlight-amber">${fmt(pct, 1)}%</span> of usable capacity. Below half. Hydropower generation remains viable but the buffer is thin.`;
+    else powellNote = `Lake Powell is at <span class="highlight">${fmt(r.elevation_ft, 1)} ft</span> \u2014 <span class="highlight">${fmt(pct, 1)}%</span> of usable capacity.`;
+  }
+
+  let snowNote = '';
+  if (sp.mean_swe_in !== null) {
+    snowNote = `Across <span class="highlight-blue">${sp.stations_reporting}</span> SNOTEL stations in the basin headwaters, mean snow water equivalent is <span class="highlight">${fmt(sp.mean_swe_in, 1)}"</span> (range ${fmt(sp.min_swe_in, 1)}" \u2013 ${fmt(sp.max_swe_in, 1)}"). This snowpack is the basin's forward water supply \u2014 spring runoff feeds rivers, reservoirs, and 40 million people downstream.`;
+  }
+
+  let flowNote = '';
+  if (leesQ) {
+    flowNote = `At Lees Ferry \u2014 the legal dividing point between the Upper and Lower Basin \u2014 flow is <span class="highlight-blue">${fmt(leesQ)} cfs</span>. This single gauge determines how much water crosses from the states that collect it to the states that consume it.`;
+  }
+
+  return `<div class="basin-context">
+    <div class="context-label"><i data-lucide="info"></i> Basin snapshot</div>
+    ${powellNote} ${snowNote} ${flowNote}
+  </div>`;
+}
+
+function initMap(d) {
+  const map = L.map('map', {
+    zoomControl: true,
+    scrollWheelZoom: true,
+    attributionControl: false,
+  }).setView([38.5, -109.5], 6);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 18,
+  }).addTo(map);
+
+  // Attribution as text
+  L.control.attribution({ prefix: false })
+    .addAttribution('CartoDB Dark Matter')
+    .addTo(map);
+
+  // Gauge markers
+  for (const g of d.gauges) {
+    if (!g.latitude) continue;
+    const q = g.parameters?.['00060'];
+    const h = g.parameters?.['00065'];
+    const marker = L.circleMarker([g.latitude, g.longitude], {
+      radius: 7, color: '#3b9eff', fillColor: '#3b9eff',
+      fillOpacity: 0.7, weight: 1.5,
+    }).addTo(map);
+    marker.bindPopup(`
+      <div class="popup-title">${g.name}</div>
+      ${q ? `<div>Discharge: <span class="popup-val">${fmt(q.value)} cfs</span></div>` : ''}
+      ${h ? `<div>Gage height: <span class="popup-val">${fmt(h.value, 2)} ft</span></div>` : ''}
+      <div style="color:#5a7a9a;font-size:0.7rem;margin-top:4px">USGS ${g.site_id} \u00b7 ${ago(q?.datetime || h?.datetime)}</div>
+    `);
+  }
+
+  // Reservoir markers
+  for (const r of d.reservoirs) {
+    if (!r.latitude) continue;
+    const marker = L.circleMarker([r.latitude, r.longitude], {
+      radius: 12, color: '#f5a623', fillColor: '#f5a623',
+      fillOpacity: 0.6, weight: 2,
+    }).addTo(map);
+    marker.bindPopup(`
+      <div class="popup-title">${r.name}</div>
+      <div>Elevation: <span class="popup-val">${fmt(r.elevation_ft, 1)} ft</span></div>
+      <div>Capacity: <span class="popup-val">${fmt(r.fill_pct, 1)}%</span></div>
+      <div style="color:#5a7a9a;font-size:0.7rem;margin-top:4px">${ago(r.datetime)}</div>
+    `);
+  }
+
+  // SNOTEL markers (smaller, translucent)
+  const snotelStations = (d.snowpack_stations || []).filter(s => s.latitude && s.swe_in !== null);
+  for (const s of snotelStations) {
+    const swe = s.swe_in || 0;
+    const r = Math.max(3, Math.min(8, swe / 3));
+    const opacity = Math.max(0.3, Math.min(0.8, swe / 20));
+    const marker = L.circleMarker([s.latitude, s.longitude], {
+      radius: r, color: '#1fc8c0', fillColor: '#1fc8c0',
+      fillOpacity: opacity, weight: 0.5,
+    }).addTo(map);
+    marker.bindPopup(`
+      <div class="popup-title">${s.name}</div>
+      <div>SWE: <span class="popup-val">${s.swe_in}"</span></div>
+      ${s.snow_depth_in !== null ? `<div>Snow depth: <span class="popup-val">${s.snow_depth_in}"</span></div>` : ''}
+      <div style="color:#5a7a9a;font-size:0.7rem;margin-top:4px">${fmt(s.elevation_ft)} ft \u00b7 ${s.state}</div>
+    `);
+  }
+}
+
 function render(d) {
-  // Updated timestamp
-  document.getElementById('updated').textContent =
-    'Data as of ' + new Date(d.fetched_at).toLocaleString('en-US', {
-      month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
-    });
+  document.getElementById('updated').innerHTML =
+    `<i data-lucide="clock" style="width:12px;height:12px"></i>
+     <span>Data as of ${new Date(d.fetched_at).toLocaleString('en-US', {
+       month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
+     })}</span>`;
 
   let html = '';
 
+  // === BASIN CONTEXT ===
+  html += basinContext(d);
+
+  // === MAP ===
+  html += `<section>
+    <div class="section-head">
+      <i data-lucide="map"></i>
+      <h2>Basin Overview</h2>
+    </div>
+    <div class="map-legend">
+      <span><span class="legend-dot gauge"></span> Stream gauge</span>
+      <span><span class="legend-dot reservoir"></span> Reservoir</span>
+      <span><span class="legend-dot snotel"></span> SNOTEL station (size = SWE)</span>
+    </div>
+    <div id="map"></div>
+  </section>`;
+
   // === RESERVOIRS ===
   html += `<section>
-    <h2>Reservoir Levels</h2>
+    <div class="section-head">
+      <i data-lucide="droplets"></i>
+      <h2>Reservoir Levels</h2>
+    </div>
     <div class="reservoir-grid">`;
 
   for (const r of d.reservoirs) {
@@ -315,54 +572,66 @@ function render(d) {
     const cls = fillClass(pct);
     html += `
       <div class="reservoir-card">
-        <h3>${r.name}</h3>
+        <h3><i data-lucide="landmark"></i> ${r.name}</h3>
         <div class="big-number">${fmt(r.elevation_ft, 1)}<span style="font-size:1rem;font-weight:400;color:var(--muted)"> ft</span></div>
-        <div class="big-label">Surface elevation above NGVD29 · ${ago(r.datetime)}</div>
+        <div class="big-label">Surface elevation above NGVD29 \u00b7 ${ago(r.datetime)}</div>
         ${pct !== null ? `
-        <div class="fill-bar-wrap">
-          <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--muted);margin-bottom:4px">
-            <span>Dead pool ${fmt(r.dead_pool_ft)} ft</span>
-            <span>${fmt(pct, 1)}% of usable capacity</span>
-            <span>Full ${fmt(r.full_pool_ft)} ft</span>
-          </div>
+        <div>
           <div class="fill-bar-track">
             <div class="fill-bar-fill ${cls}" style="width:${pct}%"></div>
           </div>
+          <div class="fill-ticks">
+            <span>Dead ${fmt(r.dead_pool_ft)}'</span>
+            <span>${fmt(pct, 1)}% usable</span>
+            <span>Full ${fmt(r.full_pool_ft)}'</span>
+          </div>
         </div>` : ''}
-        <div class="reservoir-detail">${r.notes}</div>
+        <div class="reservoir-detail">
+          <i data-lucide="info"></i>
+          <span>${r.notes}</span>
+        </div>
       </div>`;
   }
   html += `</div></section>`;
 
-  // === SNOWPACK SUMMARY ===
+  // === SNOWPACK ===
   const sp = d.snowpack_summary;
   html += `<section>
-    <h2>Snowpack — Colorado River Basin Headwaters</h2>
+    <div class="section-head">
+      <i data-lucide="snowflake"></i>
+      <h2>Snowpack \u2014 Basin Headwaters</h2>
+    </div>
     <div class="snowpack-summary">
       <div class="stat-box">
+        <div class="icon-row"><i data-lucide="thermometer-snowflake"></i></div>
         <div class="val">${fmt(sp.mean_swe_in, 1)}<span style="font-size:1rem">"</span></div>
         <div class="lbl">Basin mean SWE</div>
       </div>
       <div class="stat-box">
+        <div class="icon-row"><i data-lucide="arrow-up-right"></i></div>
         <div class="val">${fmt(sp.max_swe_in, 1)}<span style="font-size:1rem">"</span></div>
-        <div class="lbl">Max SWE (single station)</div>
+        <div class="lbl">Peak SWE (single station)</div>
       </div>
       <div class="stat-box">
+        <div class="icon-row"><i data-lucide="radio-tower"></i></div>
         <div class="val">${sp.stations_reporting}</div>
         <div class="lbl">Stations reporting</div>
       </div>
       <div class="stat-box">
-        <div class="val">${sp.date || '—'}</div>
+        <div class="icon-row"><i data-lucide="calendar"></i></div>
+        <div class="val" style="font-size:1.1rem">${sp.date || '\u2014'}</div>
         <div class="lbl">Data date</div>
       </div>
     </div>`;
 
-  // Station table (top 25, toggle to show all)
   const stations = d.snowpack_stations || [];
   const TOP = 25;
   html += `
-    <button class="toggle-btn" onclick="toggleStations(this)">Show all ${stations.length} stations ▾</button>
-    <table class="station-table">
+    <button class="toggle-btn" onclick="toggleStations(this)">
+      <i data-lucide="chevron-down"></i>
+      Show all ${stations.length} stations
+    </button>
+    <table class="data-table">
       <thead><tr>
         <th>Station</th><th>State</th><th>Elev (ft)</th>
         <th>SWE (in)</th><th>Precip (in)</th><th>Snow depth (in)</th>
@@ -371,22 +640,25 @@ function render(d) {
 
   stations.forEach((s, i) => {
     const cls = i >= TOP ? 'hidden extra-station' : '';
+    const sc = sweClass(s.swe_in);
     html += `<tr class="${cls}">
-      <td>${s.name || '—'}</td>
-      <td>${s.state || '—'}</td>
+      <td>${s.name || '\u2014'}</td>
+      <td>${s.state || '\u2014'}</td>
       <td>${fmt(s.elevation_ft)}</td>
-      <td><span class="swe-chip">${s.swe_in !== null ? s.swe_in : '—'}</span></td>
-      <td>${s.precip_in !== null ? s.precip_in : '—'}</td>
-      <td>${s.snow_depth_in !== null ? s.snow_depth_in : '—'}</td>
+      <td><span class="swe-chip ${sc}">${s.swe_in !== null ? s.swe_in : '\u2014'}</span></td>
+      <td>${s.precip_in !== null ? s.precip_in : '\u2014'}</td>
+      <td>${s.snow_depth_in !== null ? s.snow_depth_in : '\u2014'}</td>
     </tr>`;
   });
-
   html += `</tbody></table></section>`;
 
   // === STREAM GAUGES ===
   html += `<section>
-    <h2>Stream Gauges</h2>
-    <table class="gauge-table">
+    <div class="section-head">
+      <i data-lucide="activity"></i>
+      <h2>Stream Gauges</h2>
+    </div>
+    <table class="data-table">
       <thead><tr>
         <th>Station</th><th>State</th>
         <th>Discharge (cfs)</th><th>Gage height (ft)</th><th>Updated</th>
@@ -395,13 +667,13 @@ function render(d) {
 
   for (const g of d.gauges) {
     const p = g.parameters || {};
-    const q = p['00060'];  // discharge
-    const h = p['00065'];  // gage height
+    const q = p['00060'];
+    const h = p['00065'];
     html += `<tr>
       <td>${g.name}</td>
-      <td>${g.state || '—'}</td>
-      <td class="flow-val">${q ? fmt(q.value) : '—'}</td>
-      <td>${h ? fmt(h.value, 2) : '—'}</td>
+      <td>${g.state || '\u2014'}</td>
+      <td class="flow-val">${q ? fmt(q.value) : '\u2014'}</td>
+      <td>${h ? fmt(h.value, 2) : '\u2014'}</td>
       <td>${ago(q?.datetime || h?.datetime)}</td>
     </tr>`;
   }
@@ -409,16 +681,23 @@ function render(d) {
   html += `</tbody></table></section>`;
 
   document.getElementById('app').innerHTML = html;
+
+  // Init map after DOM is updated
+  setTimeout(() => initMap(d), 50);
 }
 
 function toggleStations(btn) {
   const rows = document.querySelectorAll('.extra-station');
   const hidden = rows[0]?.classList.contains('hidden');
   rows.forEach(r => r.classList.toggle('hidden', !hidden));
-  btn.textContent = hidden ? 'Show fewer stations ▴' : `Show all ${rows.length + 25} stations ▾`;
+  const icon = hidden ? 'chevron-up' : 'chevron-down';
+  const label = hidden ? 'Show fewer stations' : `Show all ${rows.length + 25} stations`;
+  btn.innerHTML = `<i data-lucide="${icon}"></i> ${label}`;
+  lucide.createIcons({ nodes: [btn] });
 }
 
 load();
+lucide.createIcons();
 </script>
 </body>
 </html>
