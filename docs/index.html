@@ -10,23 +10,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600;700&family=Source+Serif+4:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #08080a;
-      --surface: #0f0f12;
-      --surface2: #1a1a1f;
-      --border: #2a2a30;
-      --text: #d8d3c8;
-      --muted: #9a958a;
-      --faint: #2a2a30;
-      --ember: #c2512a;
-      --ember-dim: #8a3a1f;
-      --ember-glow: rgba(194, 81, 42, 0.08);
-      --sage: #4a5f4a;
-      --sage-light: #6b836b;
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --surface2: #1a1a1a;
+      --border: #2a2a2a;
+      --border2: #333333;
+      --text: #c8c2ba;
+      --text-bright: #ece6de;
+      --muted: #777777;
+      --faint: #444444;
+      --primary: #c4956a;
+      --primary-dim: #8a6545;
+      --primary-glow: rgba(196, 149, 106, 0.08);
+      --green: #8aba8a;
+      --red: #c47070;
       --blue: #7a9ab5;
-      --amber: #c49a3c;
-      --red: #c2512a;
-      --green: #4a5f4a;
-      --teal: #6b836b;
+      --amber: #c4956a;
+      --sage: #4a6a4a;
+      --sage-light: #8aba8a;
       --font-display: 'Cormorant', serif;
       --font-body: 'Source Serif 4', serif;
       --font-mono: 'IBM Plex Mono', monospace;
@@ -51,11 +52,11 @@
       gap: 12px;
     }
     .header-left { display: flex; align-items: center; gap: 12px; }
-    .header-icon { color: var(--ember); flex-shrink: 0; }
+    .header-icon { color: var(--primary); flex-shrink: 0; }
     header h1 {
       font-size: 1.25rem;
       font-weight: 600;
-      color: var(--ember);
+      color: var(--primary);
       font-family: var(--font-display);
       letter-spacing: -0.02em;
     }
@@ -121,7 +122,7 @@
       gap: 6px;
     }
     .basin-context .context-label i { width: 12px; height: 12px; }
-    .highlight { color: var(--ember); font-weight: 600; }
+    .highlight { color: var(--primary); font-weight: 600; }
     .highlight-amber { color: var(--amber); font-weight: 600; }
     .highlight-blue { color: var(--blue); font-weight: 600; }
 
@@ -147,11 +148,11 @@
       border-radius: 50%;
       display: inline-block;
     }
-    .legend-dot.above { background: var(--sage-light); }
+    .legend-dot.above { background: var(--green); }
     .legend-dot.normal { background: var(--blue); }
-    .legend-dot.below { background: var(--amber); }
-    .legend-dot.critical { background: var(--ember); }
-    .legend-dot.reservoir { background: var(--ember-dim); border: 2px solid var(--text); }
+    .legend-dot.below { background: var(--primary); }
+    .legend-dot.critical { background: var(--red); }
+    .legend-dot.reservoir { background: var(--primary-dim); border: 2px solid var(--text); }
 
     /* Leaflet popup overrides */
     .leaflet-popup-content-wrapper {
@@ -163,7 +164,7 @@
       font-size: 0.78rem !important;
     }
     .leaflet-popup-tip { background: var(--surface2) !important; }
-    .popup-title { font-weight: 600; color: var(--ember); margin-bottom: 4px; font-family: var(--font-display); }
+    .popup-title { font-weight: 600; color: var(--primary); margin-bottom: 4px; font-family: var(--font-display); }
     .popup-val { color: var(--text); font-weight: 600; font-family: var(--font-mono); }
 
     /* Reservoirs */
@@ -182,7 +183,7 @@
       font-size: 1rem;
       font-weight: 600;
       margin-bottom: 12px;
-      color: var(--ember);
+      color: var(--primary);
       font-family: var(--font-display);
       display: flex;
       align-items: center;
@@ -212,11 +213,11 @@
     .fill-bar-fill {
       height: 100%;
       border-radius: 3px;
-      background: var(--sage-light);
+      background: var(--green);
       transition: width 0.8s ease;
     }
-    .fill-bar-fill.low { background: var(--amber); }
-    .fill-bar-fill.critical { background: var(--ember); }
+    .fill-bar-fill.low { background: var(--primary); }
+    .fill-bar-fill.critical { background: var(--red); }
     .fill-ticks {
       display: flex;
       justify-content: space-between;
@@ -268,7 +269,7 @@
       font-size: 1.6rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: var(--ember);
+      color: var(--primary);
       font-family: var(--font-mono);
     }
     .stat-box .lbl {
@@ -307,11 +308,11 @@
       font-size: 0.72rem;
       font-weight: 600;
     }
-    .dev-above  { background: rgba(74,95,74,0.25); color: var(--sage-light); }
+    .dev-above  { background: rgba(138,186,138,0.15); color: var(--green); }
     .dev-normal { background: rgba(122,154,181,0.15); color: var(--blue); }
-    .dev-below  { background: rgba(196,154,60,0.15); color: var(--amber); }
-    .dev-critical { background: rgba(194,81,42,0.15); color: var(--ember); }
-    .dev-none   { background: rgba(154,149,138,0.1); color: var(--muted); }
+    .dev-below  { background: rgba(196,149,106,0.12); color: var(--primary); }
+    .dev-critical { background: rgba(196,112,112,0.15); color: var(--red); }
+    .dev-none   { background: rgba(68,68,68,0.3); color: var(--muted); }
     .flow-val { font-weight: 600; }
 
     .toggle-btn {
@@ -328,7 +329,7 @@
       gap: 6px;
     }
     .toggle-btn i { width: 12px; height: 12px; }
-    .toggle-btn:hover { border-color: var(--ember); color: var(--ember); }
+    .toggle-btn:hover { border-color: var(--primary); color: var(--primary); }
     .hidden { display: none; }
 
     /* Footer */
@@ -343,7 +344,7 @@
       align-items: center;
     }
     footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--ember); }
+    footer a:hover { color: var(--primary); }
     footer .footer-item { display: flex; align-items: center; gap: 5px; }
     footer .footer-item i { width: 12px; height: 12px; }
 
@@ -452,11 +453,11 @@ function devClass(pct) {
 }
 
 function devColor(pct) {
-  if (pct === null || pct === undefined) return '#9a958a';
-  if (pct >= 110) return '#6b836b';  // sage — above average
+  if (pct === null || pct === undefined) return '#777777';
+  if (pct >= 110) return '#8aba8a';  // green — above average
   if (pct >= 90)  return '#7a9ab5';  // blue — average
-  if (pct >= 70)  return '#c49a3c';  // amber — below average
-  return '#c2512a';                   // ember — significantly below
+  if (pct >= 70)  return '#c4956a';  // primary — below average
+  return '#c47070';                   // red — significantly below
 }
 
 function devLabel(pct) {
