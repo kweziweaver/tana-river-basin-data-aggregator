@@ -1,761 +1,678 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Colorado River Basin — Watershed Data</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600;700&family=Source+Serif+4:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0a0a0a;
-      --surface: #141414;
-      --surface2: #1a1a1a;
-      --border: #2a2a2a;
-      --border2: #333333;
-      --text: #c8c2ba;
-      --text-bright: #ece6de;
-      --muted: #777777;
-      --faint: #444444;
-      --primary: #c4956a;
-      --primary-dim: #8a6545;
-      --primary-glow: rgba(196, 149, 106, 0.08);
-      --green: #8aba8a;
-      --red: #c47070;
-      --blue: #7a9ab5;
-      --amber: #c4956a;
-      --sage: #4a6a4a;
-      --sage-light: #8aba8a;
-      --font-display: 'Cormorant', serif;
-      --font-body: 'Source Serif 4', serif;
-      --font-mono: 'IBM Plex Mono', monospace;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 14px;
-      line-height: 1.6;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tana Basin — Bioregional Data</title>
+    
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Tana Bioregion Color Palette */
+            --bg-base: #0a0e12;
+            --bg-glass: rgba(18, 25, 33, 0.45);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(94, 219, 186, 0.15);
+            
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --text-faint: #475569;
+            
+            /* Thematic Accents */
+            --tana-river: #3b82f6;      /* Deep River Blue */
+            --tana-flood: #60a5fa;      /* Light River Blue */
+            --savanna-gold: #f59e0b;    /* Gold/Amber */
+            --savanna-dust: #d97706;    /* Deep Orange */
+            --forest-lush: #10b981;     /* Embu/Nyeri Greens */
+            --forest-deep: #059669;
+            --alert-red: #ef4444;
+            --alert-rose: #f43f5e;
+            
+            --font-ui: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+        }
 
-    /* Header */
-    header {
-      padding: 24px 32px 16px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .header-left { display: flex; align-items: center; gap: 12px; }
-    .header-icon { color: var(--primary); flex-shrink: 0; }
-    header h1 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--primary);
-      font-family: var(--font-display);
-      letter-spacing: -0.02em;
-    }
-    header .subtitle {
-      font-size: 0.8rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .subtitle i { width: 12px; height: 12px; }
-    .updated {
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-align: right;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    main { padding: 24px 32px; max-width: 1400px; }
-    section { margin-bottom: 40px; }
+        body {
+            background-color: var(--bg-base);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.04) 0%, transparent 50%);
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            font-size: 15px;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
 
-    /* Section headers */
-    .section-head {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
-    }
-    .section-head i { color: var(--muted); width: 14px; height: 14px; }
-    h2 {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      font-family: var(--font-mono);
-    }
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .glass-panel:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-2px);
+        }
 
-    /* Basin context */
-    .basin-context {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px 24px;
-      margin-bottom: 24px;
-      font-size: 0.85rem;
-      line-height: 1.7;
-      color: var(--text);
-    }
-    .basin-context .context-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .basin-context .context-label i { width: 12px; height: 12px; }
-    .highlight { color: var(--primary); font-weight: 600; }
-    .highlight-amber { color: var(--amber); font-weight: 600; }
-    .highlight-blue { color: var(--blue); font-weight: 600; }
+        /* Layout */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        header {
+            padding: 32px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid var(--border-glass);
+            margin-bottom: 40px;
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--tana-river), var(--forest-lush));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        .brand-text h1 {
+            font-size: 2rem;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+        }
+        .brand-text p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .timestamp {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-glass);
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-glass);
+        }
 
-    /* Map */
-    #map {
-      width: 100%;
-      height: 420px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      margin-bottom: 12px;
-    }
-    .map-legend {
-      display: flex;
-      gap: 20px;
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-    .map-legend span { display: flex; align-items: center; gap: 5px; }
-    .legend-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-    .legend-dot.above { background: var(--green); }
-    .legend-dot.normal { background: var(--blue); }
-    .legend-dot.below { background: var(--primary); }
-    .legend-dot.critical { background: var(--red); }
-    .legend-dot.reservoir { background: var(--primary-dim); border: 2px solid var(--text); }
+        /* Dashboard Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .col-span-12 { grid-column: span 12; }
+        .col-span-8 { grid-column: span 8; }
+        .col-span-4 { grid-column: span 4; }
+        .col-span-6 { grid-column: span 6; }
+        .col-span-3 { grid-column: span 3; }
+        
+        @media (max-width: 1024px) {
+            .col-span-8, .col-span-4, .col-span-6, .col-span-3 { grid-column: span 12; }
+        }
 
-    /* Leaflet popup overrides */
-    .leaflet-popup-content-wrapper {
-      background: var(--surface2) !important;
-      color: var(--text) !important;
-      border: 1px solid var(--border) !important;
-      border-radius: 6px !important;
-      font-family: var(--font-body) !important;
-      font-size: 0.78rem !important;
-    }
-    .leaflet-popup-tip { background: var(--surface2) !important; }
-    .popup-title { font-weight: 600; color: var(--primary); margin-bottom: 4px; font-family: var(--font-display); }
-    .popup-val { color: var(--text); font-weight: 600; font-family: var(--font-mono); }
+        /* Map Container */
+        .map-section {
+            height: 500px;
+            position: relative;
+            z-index: 10;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            background: #000;
+        }
 
-    /* Reservoirs */
-    .reservoir-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 16px;
-    }
-    .reservoir-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px;
-    }
-    .reservoir-card h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-      color: var(--primary);
-      font-family: var(--font-display);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .reservoir-card h3 i { width: 16px; height: 16px; }
-    .big-number {
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 4px;
-      font-family: var(--font-mono);
-    }
-    .big-label {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-    .fill-bar-track {
-      height: 6px;
-      background: var(--border);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-    .fill-bar-fill {
-      height: 100%;
-      border-radius: 3px;
-      background: var(--green);
-      transition: width 0.8s ease;
-    }
-    .fill-bar-fill.low { background: var(--primary); }
-    .fill-bar-fill.critical { background: var(--red); }
-    .fill-ticks {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.68rem;
-      color: var(--faint);
-      margin-top: 4px;
-    }
-    .fill-pct {
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-    .reservoir-detail {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: flex-start;
-      gap: 6px;
-    }
-    .reservoir-detail i { width: 12px; height: 12px; flex-shrink: 0; margin-top: 2px; }
+        /* Generalized Card Styles */
+        .card-header {
+            padding: 24px 24px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            margin-bottom: 16px;
+        }
+        .card-header i {
+            color: var(--tana-river);
+        }
+        .card-header h2 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+        .card-body {
+            padding: 0 24px 24px;
+        }
+        
+        /* Data Visuals */
+        .data-point {
+            margin-bottom: 20px;
+        }
+        .data-point:last-child {
+            margin-bottom: 0;
+        }
+        .data-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .data-value {
+            font-family: var(--font-mono);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+        .data-value span.unit {
+            font-size: 1rem;
+            color: var(--text-faint);
+            font-family: var(--font-ui);
+            font-weight: 400;
+        }
 
-    /* Snowpack summary */
-    .snowpack-summary {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-    .stat-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 16px 20px;
-      min-width: 140px;
-      flex: 1;
-    }
-    .stat-box .icon-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 6px;
-    }
-    .stat-box .icon-row i { width: 14px; height: 14px; color: var(--muted); }
-    .stat-box .val {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--primary);
-      font-family: var(--font-mono);
-    }
-    .stat-box .lbl {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 2px;
-    }
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .badge-normal { background: rgba(16, 185, 129, 0.15); color: var(--forest-lush); box-shadow: 0 0 10px rgba(16, 185, 129, 0.2); }
+        .badge-alert { background: rgba(239, 68, 68, 0.15); color: var(--alert-red); box-shadow: 0 0 10px rgba(239, 68, 68, 0.2); }
+        .badge-warn { background: rgba(245, 158, 11, 0.15); color: var(--savanna-gold); box-shadow: 0 0 10px rgba(245, 158, 11, 0.2); }
+        .badge-info { background: rgba(59, 130, 246, 0.15); color: var(--tana-flood); }
 
-    /* Tables */
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.8rem;
-    }
-    .data-table th {
-      text-align: left;
-      padding: 6px 10px;
-      color: var(--muted);
-      font-weight: 500;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      border-bottom: 1px solid var(--border);
-      font-family: var(--font-mono);
-    }
-    .data-table td {
-      padding: 7px 10px;
-      border-bottom: 1px solid rgba(30,45,61,0.6);
-      color: var(--text);
-    }
-    .data-table tr:hover td { background: var(--surface); }
-    .swe-chip, .dev-chip {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.72rem;
-      font-weight: 600;
-    }
-    .dev-above  { background: rgba(138,186,138,0.15); color: var(--green); }
-    .dev-normal { background: rgba(122,154,181,0.15); color: var(--blue); }
-    .dev-below  { background: rgba(196,149,106,0.12); color: var(--primary); }
-    .dev-critical { background: rgba(196,112,112,0.15); color: var(--red); }
-    .dev-none   { background: rgba(68,68,68,0.3); color: var(--muted); }
-    .flow-val { font-weight: 600; }
+        /* Progress Bars */
+        .progress-track {
+            height: 6px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    .toggle-btn {
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 5px 14px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.75rem;
-      margin-bottom: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .toggle-btn i { width: 12px; height: 12px; }
-    .toggle-btn:hover { border-color: var(--primary); color: var(--primary); }
-    .hidden { display: none; }
+        /* Warm Data Section */
+        .oracle-quote {
+            font-family: 'Outfit';
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--savanna-gold);
+            padding: 16px 20px;
+            border-left: 3px solid var(--savanna-gold);
+            background: linear-gradient(90deg, rgba(245, 158, 11, 0.05), transparent);
+            margin: 16px 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
 
-    /* Footer */
-    footer {
-      padding: 24px 32px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.75rem;
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--primary); }
-    footer .footer-item { display: flex; align-items: center; gap: 5px; }
-    footer .footer-item i { width: 12px; height: 12px; }
-
-    .loading { color: var(--muted); padding: 40px; text-align: center; }
-    .error { color: var(--red); padding: 16px; }
-
-    @media (max-width: 640px) {
-      header, main, footer { padding-left: 16px; padding-right: 16px; }
-      #map { height: 300px; }
-      .reservoir-grid { grid-template-columns: 1fr; }
-      .snowpack-summary { flex-direction: column; }
-      .stat-box { min-width: unset; }
-    }
-  </style>
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        footer a { color: var(--tana-river); text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: var(--text-main); }
+        
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-glass);
+            border-top-color: var(--tana-river);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        /* Leaflet popup dark mode overrides */
+        .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+            background: var(--bg-glass) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            border: 1px solid var(--border-glass) !important;
+            color: var(--text-main) !important;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4) !important;
+        }
+        .leaflet-popup-content { font-family: var(--font-ui) !important; margin: 16px !important; }
+        .popup-title { font-weight: 600; font-size: 1.1rem; color: var(--savanna-gold); margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4px; }
+        .popup-val { font-family: var(--font-mono); font-weight: 600; color: var(--text-main); }
+    </style>
 </head>
 <body>
 
-<header>
-  <div>
-    <div class="header-left">
-      <i data-lucide="waves" class="header-icon" style="width:24px;height:24px"></i>
-      <h1>Colorado River Basin</h1>
+<div id="loading" class="loading-screen">
+    <div style="text-align: center;">
+        <div class="spinner" style="margin: 0 auto 20px;"></div>
+        <div>Initializing Tana Basin Architecture...</div>
     </div>
-    <div class="subtitle">
-      <i data-lucide="activity"></i>
-      <span>Stream gauges</span>
-      <span style="color:var(--faint)">·</span>
-      <i data-lucide="droplets"></i>
-      <span>Reservoir levels</span>
-      <span style="color:var(--faint)">·</span>
-      <i data-lucide="snowflake"></i>
-      <span>Snowpack</span>
+</div>
+
+<div class="container" style="display: none;" id="main-content">
+    <header>
+        <div class="brand">
+            <div class="brand-icon">
+                <i data-lucide="waves" style="width: 28px; height: 28px;"></i>
+            </div>
+            <div class="brand-text">
+                <h1>Tana Basin</h1>
+                <p>Bioregional Data Aggregator</p>
+            </div>
+        </div>
+        <div class="timestamp" id="timestamp">
+            <i data-lucide="satellite" style="width: 16px; height: 16px; color: var(--tana-river)"></i>
+            <span>Loading telemetry...</span>
+        </div>
+    </header>
+
+    <div class="bento-grid">
+        <!-- Centerpiece Map (Top Left) -->
+        <div class="glass-panel col-span-8 map-section" id="map-container">
+            <div id="map"></div>
+        </div>
+
+        <!-- 1. River Flow Context (Top Right) -->
+        <div class="glass-panel col-span-4" id="layer-river">
+            <div class="card-header">
+                <i data-lucide="activity"></i>
+                <h2>River Flow & Levels</h2>
+            </div>
+            <div class="card-body">
+                <div id="river-content"></div>
+            </div>
+        </div>
+
+        <!-- 2. Vegetation Health -->
+        <div class="glass-panel col-span-4" id="layer-veg">
+            <div class="card-header">
+                <i data-lucide="leaf"></i>
+                <h2>Vegetation Health (VCI)</h2>
+            </div>
+            <div class="card-body">
+                <div id="veg-content"></div>
+            </div>
+        </div>
+        
+        <!-- 3. Headwater Health -->
+        <div class="glass-panel col-span-4" id="layer-headwater">
+            <div class="card-header">
+                <i data-lucide="mountain"></i>
+                <h2>Headwater Health</h2>
+            </div>
+            <div class="card-body">
+                <div id="headwater-content"></div>
+            </div>
+        </div>
+
+        <!-- 4. Biodiversity -->
+        <div class="glass-panel col-span-4" id="layer-bio">
+            <div class="card-header">
+                <i data-lucide="paw-print"></i>
+                <h2>Biodiversity & Migration</h2>
+            </div>
+            <div class="card-body">
+                <div id="bio-content"></div>
+            </div>
+        </div>
+
+        <!-- 5. Economic Value -->
+        <div class="glass-panel col-span-4" id="layer-econ">
+            <div class="card-header">
+                <i data-lucide="coins"></i>
+                <h2>Economic Value Flows</h2>
+            </div>
+            <div class="card-body">
+                <div id="econ-content"></div>
+            </div>
+        </div>
+
+        <!-- 6. Governance -->
+        <div class="glass-panel col-span-4" id="layer-gov">
+            <div class="card-header">
+                <i data-lucide="landmark"></i>
+                <h2>Governance Progress</h2>
+            </div>
+            <div class="card-body">
+                <div id="gov-content"></div>
+            </div>
+        </div>
+
+        <!-- 7. Warm Data -->
+        <div class="glass-panel col-span-4" id="layer-warm">
+            <div class="card-header">
+                <i data-lucide="flame"></i>
+                <h2>Warm Data (TEK)</h2>
+            </div>
+            <div class="card-body">
+                <div id="warm-content"></div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="updated" id="updated">
-    <i data-lucide="clock" style="width:12px;height:12px"></i>
-    <span>Loading...</span>
-  </div>
-</header>
 
-<main>
-  <div id="app"><div class="loading">Fetching watershed data...</div></div>
-</main>
-
-<footer>
-  <div style="width:100%;font-size:0.78rem;line-height:1.6;color:var(--muted);margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border)">
-    Built by <a href="https://techne.institute" target="_blank" style="color:var(--primary)">Techne Institute</a> / <a href="https://regenhub.xyz" target="_blank" style="color:var(--primary)">RegenHub, LCA</a> in Boulder, Colorado.
-    RegenHub's public benefit is cultivating scenius — collective intelligence that emerges when people share sustained proximity. This tool is an expression of that benefit: open watershed data for the bioregion we inhabit, freely accessible to anyone coordinating the health of the Colorado River Basin.
-  </div>
-  <div class="footer-item">
-    <i data-lucide="database"></i>
-    <span>Data:</span>
-    <a href="https://waterservices.usgs.gov/" target="_blank">USGS</a>
-    <span style="color:var(--faint)">·</span>
-    <a href="https://wcc.sc.egov.usda.gov/awdbRestApi/swagger-ui/index.html" target="_blank">NRCS SNOTEL</a>
-  </div>
-  <div class="footer-item">
-    <i data-lucide="refresh-cw"></i>
-    <span>Updated twice daily</span>
-  </div>
-  <div class="footer-item">
-    <i data-lucide="github"></i>
-    <a href="https://github.com/nou-techne/watershed-data-collection" target="_blank">Source</a>
-  </div>
-  <div class="footer-item">
-    <i data-lucide="external-link"></i>
-    <a href="https://owockibot.xyz/bounty/" target="_blank">owockibot bounty #237</a>
-  </div>
-</footer>
+    <footer>
+        <div>
+            Built for the <strong>Tana Bioregion</strong>. Data architecture fork of <a href="https://github.com/nou-techne/watershed-data-collection" target="_blank">Nou-Techne CRB</a>.
+        </div>
+        <div style="display:flex; gap: 20px;">
+            <span><i data-lucide="shield-check" style="width:14px; margin-right:4px; vertical-align:-2px;"></i> Mock Data Architecture Active</span>
+        </div>
+    </footer>
+</div>
 
 <script>
-async function load() {
-  try {
-    const res = await fetch('./data.json');
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const d = await res.json();
-    render(d);
-    lucide.createIcons();
-  } catch (e) {
-    document.getElementById('app').innerHTML =
-      `<div class="error">Failed to load data: ${e.message}</div>`;
-  }
-}
+    // Utility functions
+    const fmt = (val, dec=0) => Number(val).toLocaleString('en-US', {minimumFractionDigits: dec, maximumFractionDigits: dec});
+    const renderBadge = (status) => {
+        let cls = 'badge-info';
+        if(status.includes('Normal') || status.includes('Stable') || status.includes('Optimistic') || status.includes('Complete')) cls = 'badge-normal';
+        if(status.includes('Alert') || status.includes('Severe') || status.includes('Declining') || status.includes('Concerned')) cls = 'badge-alert';
+        if(status.includes('Moderate') || status.includes('Warning') || status.includes('In Progress')) cls = 'badge-warn';
+        return `<span class="badge ${cls}">${status}</span>`;
+    };
 
-function fmt(v, digits=0) {
-  if (v === null || v === undefined) return '\u2014';
-  return Number(v).toLocaleString('en-US', { maximumFractionDigits: digits });
-}
+    let map;
 
-function fillClass(pct) {
-  if (pct === null) return '';
-  if (pct < 30) return 'critical';
-  if (pct < 50) return 'low';
-  return '';
-}
+    async function initDashboard() {
+        try {
+            const response = await fetch('data.json');
+            const data = await response.json();
+            
+            // Format timestamp
+            const date = new Date(data.fetched_at);
+            document.getElementById('timestamp').innerHTML = `
+                <i data-lucide="satellite" style="width: 16px; height: 16px; color: var(--tana-river)"></i>
+                <span>Data Synthesized: ${date.toLocaleString('en-US', {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'})}</span>
+            `;
 
-// Deviation from median: green = above, blue = normal, amber = below, red = critical
-function devClass(pct) {
-  if (pct === null || pct === undefined) return 'dev-none';
-  if (pct >= 110) return 'dev-above';
-  if (pct >= 90)  return 'dev-normal';
-  if (pct >= 70)  return 'dev-below';
-  return 'dev-critical';
-}
+            populateLayers(data);
+            initLeafletMap(data);
 
-function devColor(pct) {
-  if (pct === null || pct === undefined) return '#777777';
-  if (pct >= 110) return '#8aba8a';  // green — above average
-  if (pct >= 90)  return '#7a9ab5';  // blue — average
-  if (pct >= 70)  return '#c4956a';  // primary — below average
-  return '#c47070';                   // red — significantly below
-}
+            // Hide loader, show content
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            map.invalidateSize(); // Fix map rendering after display:block
 
-function devLabel(pct) {
-  if (pct === null || pct === undefined) return '';
-  if (pct >= 110) return 'above avg';
-  if (pct >= 90)  return 'normal';
-  if (pct >= 70)  return 'below avg';
-  return 'critical';
-}
+            // Re-render icons
+            lucide.createIcons();
+            
+            // Trigger progress bar animations
+            setTimeout(() => {
+                const fills = document.querySelectorAll('.progress-fill');
+                fills.forEach(f => f.style.width = f.getAttribute('data-width'));
+            }, 100);
 
-function ago(isoStr) {
-  if (!isoStr) return '\u2014';
-  const diff = Date.now() - new Date(isoStr).getTime();
-  const h = Math.floor(diff / 3600000);
-  if (h < 1) return `${Math.floor(diff / 60000)}m ago`;
-  if (h < 24) return `${h}h ago`;
-  return `${Math.floor(h/24)}d ago`;
-}
+        } catch (error) {
+            console.error("Error loading mock data:", error);
+            document.getElementById('loading').innerHTML = `<div style="color:var(--alert-red)">Fatal: Could not load data.json<br>${error.message}</div>`;
+        }
+    }
 
-function basinContext(d) {
-  const r = d.reservoirs[0];
-  const sp = d.snowpack_summary;
-  const leesFerry = d.gauges.find(g => g.site_id === '09380000');
-  const leesQ = leesFerry?.parameters?.['00060']?.value;
+    function populateLayers(data) {
+        // 1. River Flow
+        const rf = data.river_flow[0];
+        const rfPct = Math.min(100, (rf.water_level_m / rf.flood_threshold_m) * 100);
+        const rfColor = rfPct > 90 ? 'var(--alert-red)' : 'var(--tana-flood)';
+        document.getElementById('river-content').innerHTML = `
+            <div class="data-point">
+                <div class="data-label"><span>${rf.station_name} Level</span> ${renderBadge(rf.status)}</div>
+                <div class="data-value">${fmt(rf.water_level_m, 2)} <span class="unit">meters</span></div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 0%; background: ${rfColor}" data-width="${rfPct}%"></div>
+                </div>
+                <div style="font-size:0.75rem; color:var(--text-faint); margin-top:4px; text-align:right;">Threshold: ${fmt(rf.flood_threshold_m, 2)}m</div>
+            </div>
+            <div class="data-point" style="margin-top: 20px;">
+                <div class="data-label">Discharge Volume</div>
+                <div class="data-value">${fmt(rf.discharge_m3s, 1)} <span class="unit">m³/s</span></div>
+            </div>
+        `;
 
-  let powellNote = '';
-  if (r) {
-    const pct = r.fill_pct;
-    if (pct < 30) powellNote = `Lake Powell is at <span class="highlight-amber">${fmt(r.elevation_ft, 1)} ft</span> \u2014 <span class="highlight-amber">${fmt(pct, 1)}%</span> of usable capacity. This is critically low; hydropower generation at Glen Canyon Dam requires minimum ~3,490 ft.`;
-    else if (pct < 50) powellNote = `Lake Powell is at <span class="highlight-amber">${fmt(r.elevation_ft, 1)} ft</span> \u2014 <span class="highlight-amber">${fmt(pct, 1)}%</span> of usable capacity. Below half. Hydropower generation remains viable but the buffer is thin.`;
-    else powellNote = `Lake Powell is at <span class="highlight">${fmt(r.elevation_ft, 1)} ft</span> \u2014 <span class="highlight">${fmt(pct, 1)}%</span> of usable capacity.`;
-  }
+        // 2. Vegetation Health
+        let vegHtml = '';
+        data.vegetation_health.forEach(v => {
+            const vColor = v.vci_score < 35 ? 'var(--alert-red)' : v.vci_score < 50 ? 'var(--savanna-gold)' : 'var(--forest-lush)';
+            vegHtml += `
+                <div class="data-point" style="margin-bottom:12px; padding-bottom:12px; border-bottom:1px solid var(--border-glass)">
+                    <div class="data-label"><span>${v.county}</span> ${renderBadge(v.status)}</div>
+                    <div style="display:flex; align-items:center; gap: 12px;">
+                        <div class="data-value" style="font-size:1.25rem;">${fmt(v.vci_score, 1)}</div>
+                        <div class="progress-track" style="flex-grow:1; margin-top:0;">
+                            <div class="progress-fill" style="width: 0%; background: ${vColor}" data-width="${Math.min(100, v.vci_score)}%"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        document.getElementById('veg-content').innerHTML = vegHtml;
 
-  let snowNote = '';
-  if (sp.mean_swe_in !== null) {
-    const pctMed = sp.mean_pct_of_median;
-    const pctStr = pctMed !== null ? ` (<span class="${devClass(pctMed)}" style="padding:1px 6px;border-radius:3px">${fmt(pctMed, 0)}% of median</span>)` : '';
-    snowNote = `Across <span class="highlight-blue">${sp.stations_reporting}</span> SNOTEL stations in the basin headwaters, mean snow water equivalent is <span class="highlight">${fmt(sp.mean_swe_in, 1)}"</span>${pctStr}. This snowpack is the basin's forward water supply \u2014 spring runoff feeds rivers, reservoirs, and 40 million people downstream.`;
-  }
+        // 3. Headwater Health
+        const hw = data.headwater_health;
+        document.getElementById('headwater-content').innerHTML = `
+            <div class="data-point">
+                <div class="data-label"><span>${hw.region}</span> ${renderBadge(hw.streamflow_trend)}</div>
+                <div class="data-value" style="color:var(--forest-lush)">${fmt(hw.forest_cover_pct, 1)}<span class="unit">% Canopy</span></div>
+            </div>
+            <div class="data-point" style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px;">
+                <div class="data-label"><i data-lucide="triangle-alert" style="width:14px;color:var(--alert-rose)"></i> Deforestation Alerts (7d)</div>
+                <div class="data-value" style="font-size:1.4rem">${hw.deforestation_alerts} <span class="unit">incidents detected by KFS</span></div>
+            </div>
+        `;
 
-  let flowNote = '';
-  if (leesQ) {
-    flowNote = `At Lees Ferry \u2014 the legal dividing point between the Upper and Lower Basin \u2014 flow is <span class="highlight-blue">${fmt(leesQ)} cfs</span>. This single gauge determines how much water crosses from the states that collect it to the states that consume it.`;
-  }
+        // 4. Biodiversity
+        let bioHtml = '';
+        data.biodiversity.forEach(b => {
+             bioHtml += `
+                <div class="data-point" style="margin-bottom:16px;">
+                    <div class="data-label"><span>${b.species}</span></div>
+                    <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+                        <div class="data-value">${b.tracked_individuals} <span class="unit">tracked</span></div>
+                        ${renderBadge(b.movement_status)}
+                    </div>
+                </div>
+            `;
+        });
+        document.getElementById('bio-content').innerHTML = bioHtml;
 
-  return `<div class="basin-context">
-    <div class="context-label"><i data-lucide="info"></i> Basin snapshot</div>
-    ${powellNote} ${snowNote} ${flowNote}
-  </div>`;
-}
+        // 5. Economic Value
+        const ec = data.economic_value;
+        const ecColor = ec.solar_uptime_pct > 95 ? 'var(--forest-lush)' : 'var(--savanna-gold)';
+        document.getElementById('econ-content').innerHTML = `
+            <div class="data-point">
+                <div class="data-label">Daily Livestock Offtake (Bioregional Bank)</div>
+                <div class="data-value">${fmt(ec.livestock_offtake_daily)} <span class="unit">heads</span></div>
+                <div style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">Avg Price: KES ${fmt(ec.average_price_kes)}</div>
+            </div>
+            <div class="data-point" style="margin-top:20px;">
+                <div class="data-label">Solar Cold-Chain Performance</div>
+                <div class="data-value">${fmt(ec.solar_uptime_pct, 1)}<span class="unit">% Uptime across ${ec.cold_chain_nodes_active} nodes</span></div>
+                <div class="progress-track" style="margin-top:6px;">
+                     <div class="progress-fill" style="width: 0%; background: ${ecColor}" data-width="${ec.solar_uptime_pct}%"></div>
+                </div>
+            </div>
+        `;
 
-function initMap(d) {
-  const map = L.map('map', {
-    zoomControl: true,
-    scrollWheelZoom: true,
-    attributionControl: false,
-  }).setView([38.5, -109.5], 6);
+        // 6. Governance
+        const gv = data.governance;
+        document.getElementById('gov-content').innerHTML = `
+            <div class="data-point">
+                <div class="data-label">CCRI Grants Allocated (FLLoCA)</div>
+                <div class="data-value" style="color:var(--tana-river)">${fmt(gv.ccri_grants_allocated_kes)} <span class="unit">KES</span></div>
+            </div>
+            <div class="data-point" style="margin-top:20px;">
+                <div class="data-label">Community Forest Assoc. (CFAs) Active</div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div class="data-value">${gv.active_community_forest_associations}</div>
+                    ${renderBadge(gv.cfa_restructuring_status)}
+                </div>
+            </div>
+        `;
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    maxZoom: 18,
-  }).addTo(map);
+        // 7. Warm Data
+        const wd = data.warm_data;
+        document.getElementById('warm-content').innerHTML = `
+            <div class="data-point">
+                <div class="data-label">Source: ${wd.source}</div>
+                <div class="oracle-quote">
+                    "${wd.seasonal_forecast}"
+                </div>
+                <div style="display:flex; align-items:center; gap: 8px; margin-top: 12px;">
+                    <span style="font-size:0.85rem; color:var(--text-muted)">Community Sentiment:</span>
+                    ${renderBadge(wd.community_sentiment)}
+                </div>
+            </div>
+        `;
+    }
 
-  // Attribution as text
-  L.control.attribution({ prefix: false })
-    .addAttribution('CartoDB Dark Matter')
-    .addTo(map);
+    function initLeafletMap(data) {
+        // Tana Basin Approximate Center
+        map = L.map('map', {
+            zoomControl: false,
+            attributionControl: false
+        }).setView([-0.5, 39.5], 7);
 
-  // Gauge markers — colored by % of median discharge
-  for (const g of d.gauges) {
-    if (!g.latitude) continue;
-    const q = g.parameters?.['00060'];
-    const h = g.parameters?.['00065'];
-    const pct = g.pct_of_median;
-    const clr = devColor(pct);
-    const marker = L.circleMarker([g.latitude, g.longitude], {
-      radius: 8, color: clr, fillColor: clr,
-      fillOpacity: 0.75, weight: 1.5,
-    }).addTo(map);
-    const pctLine = pct !== null ? `<div style="margin-top:2px"><span class="dev-chip ${devClass(pct)}">${fmt(pct, 0)}% of median</span> <span style="color:#5a7a9a;font-size:0.65rem">(median: ${fmt(g.median_discharge_cfs)} cfs)</span></div>` : '';
-    marker.bindPopup(`
-      <div class="popup-title">${g.name}</div>
-      ${q ? `<div>Discharge: <span class="popup-val">${fmt(q.value)} cfs</span></div>` : ''}
-      ${h ? `<div>Gage height: <span class="popup-val">${fmt(h.value, 2)} ft</span></div>` : ''}
-      ${pctLine}
-      <div style="color:#5a7a9a;font-size:0.7rem;margin-top:4px">USGS ${g.site_id} \u00b7 ${ago(q?.datetime || h?.datetime)}</div>
-    `);
-  }
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-  // Reservoir markers — colored by % of median capacity
-  for (const r of d.reservoirs) {
-    if (!r.latitude) continue;
-    const pct = r.pct_of_median;
-    const clr = devColor(pct);
-    const marker = L.circleMarker([r.latitude, r.longitude], {
-      radius: 14, color: '#c9d8e8', fillColor: clr,
-      fillOpacity: 0.7, weight: 2,
-    }).addTo(map);
-    const pctLine = pct !== null ? `<div style="margin-top:2px"><span class="dev-chip ${devClass(pct)}">${fmt(pct, 0)}% of median</span></div>` : '';
-    marker.bindPopup(`
-      <div class="popup-title">${r.name}</div>
-      <div>Elevation: <span class="popup-val">${fmt(r.elevation_ft, 1)} ft</span></div>
-      <div>Capacity: <span class="popup-val">${fmt(r.fill_pct, 1)}%</span> usable</div>
-      ${pctLine}
-      <div style="color:#5a7a9a;font-size:0.7rem;margin-top:4px">${ago(r.datetime)}</div>
-    `);
-  }
+        // Dark modern map tiles
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19
+        }).addTo(map);
 
-  // SNOTEL markers — colored by % of median SWE
-  const snotelStations = (d.snowpack_stations || []).filter(s => s.latitude && s.swe_in !== null);
-  for (const s of snotelStations) {
-    const swe = s.swe_in || 0;
-    const pct = s.pct_of_median;
-    const clr = devColor(pct);
-    const r = Math.max(3, Math.min(8, swe / 3));
-    const marker = L.circleMarker([s.latitude, s.longitude], {
-      radius: r, color: clr, fillColor: clr,
-      fillOpacity: 0.7, weight: 0.5,
-    }).addTo(map);
-    const pctLine = pct !== null ? `<div style="margin-top:2px"><span class="dev-chip ${devClass(pct)}">${fmt(pct, 0)}% of median</span> <span style="color:#5a7a9a;font-size:0.65rem">(median: ${s.swe_median_in}")</span></div>` : '';
-    marker.bindPopup(`
-      <div class="popup-title">${s.name}</div>
-      <div>SWE: <span class="popup-val">${s.swe_in}"</span></div>
-      ${s.snow_depth_in !== null ? `<div>Snow depth: <span class="popup-val">${s.snow_depth_in}"</span></div>` : ''}
-      ${pctLine}
-      <div style="color:#5a7a9a;font-size:0.7rem;margin-top:4px">${fmt(s.elevation_ft)} ft \u00b7 ${s.state}</div>
-    `);
-  }
-}
+        // Add River Flow Marker (Garissa)
+        data.river_flow.forEach(rf => {
+            const m = L.circleMarker([rf.latitude, rf.longitude], {
+                radius: 10, fillOpacity: 0.8, color: '#fff', weight: 2, fillColor: 'var(--tana-river)'
+            }).addTo(map);
+            m.bindPopup(`
+                <div class="popup-title">River Station: ${rf.station_name}</div>
+                <div>Level: <span class="popup-val">${fmt(rf.water_level_m, 2)}m</span></div>
+                <div>Discharge: <span class="popup-val">${fmt(rf.discharge_m3s, 1)} m³/s</span></div>
+            `);
+        });
 
-function render(d) {
-  document.getElementById('updated').innerHTML =
-    `<i data-lucide="clock" style="width:12px;height:12px"></i>
-     <span>Data as of ${new Date(d.fetched_at).toLocaleString('en-US', {
-       month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
-     })}</span>`;
+        // Add Headwater Marker (Upper Basin)
+        const hw = data.headwater_health;
+        const hwM = L.circleMarker([hw.latitude, hw.longitude], {
+                radius: 12, fillOpacity: 0.8, color: 'var(--bg-base)', weight: 3, fillColor: 'var(--forest-lush)'
+        }).addTo(map);
+        hwM.bindPopup(`
+            <div class="popup-title">Headwaters: ${hw.region}</div>
+            <div>Forest Cover: <span class="popup-val">${fmt(hw.forest_cover_pct, 1)}%</span></div>
+            <div>Alerts: <span class="popup-val" style="color:var(--alert-red)">${hw.deforestation_alerts}</span></div>
+        `);
 
-  let html = '';
+        // Add Biodiversity Markers
+        data.biodiversity.forEach(b => {
+             const bm = L.circleMarker([b.location_cluster.latitude, b.location_cluster.longitude], {
+                radius: 8, fillOpacity: 0.7, color: 'var(--savanna-gold)', weight: 1, fillColor: 'var(--savanna-gold)'
+            }).addTo(map);
+            bm.bindPopup(`
+                <div class="popup-title">Species Tracker</div>
+                <div>Type: <span class="popup-val" style="color:var(--savanna-gold)">${b.species}</span></div>
+                <div>Status: <span class="popup-val">${b.movement_status}</span></div>
+            `);
+        });
 
-  // === BASIN CONTEXT ===
-  html += basinContext(d);
+        // Add Vegetation Markers (Counties)
+        data.vegetation_health.forEach(v => {
+             const vColor = v.vci_score < 35 ? '#ef4444' : v.vci_score < 50 ? '#f59e0b' : '#10b981';
+             const vm = L.circleMarker([v.latitude, v.longitude], {
+                radius: 6, fillOpacity: 0.5, color: vColor, weight: 1, fillColor: vColor
+            }).addTo(map);
+            vm.bindPopup(`
+                <div class="popup-title">VCI Node: ${v.county}</div>
+                <div>Score: <span class="popup-val" style="color:${vColor}">${fmt(v.vci_score, 1)}</span></div>
+                <div>Status: <span class="popup-val">${v.status}</span></div>
+            `);
+        });
+    }
 
-  // === MAP ===
-  html += `<section>
-    <div class="section-head">
-      <i data-lucide="map"></i>
-      <h2>Basin Overview</h2>
-    </div>
-    <div class="map-legend">
-      <span><span class="legend-dot above"></span> Above avg (&gt;110%)</span>
-      <span><span class="legend-dot normal"></span> Normal (90\u2013110%)</span>
-      <span><span class="legend-dot below"></span> Below avg (70\u201390%)</span>
-      <span><span class="legend-dot critical"></span> Critical (&lt;70%)</span>
-      <span style="margin-left:8px"><span class="legend-dot reservoir"></span> Reservoir</span>
-      <span style="color:var(--faint)">| Dot size = relative magnitude</span>
-    </div>
-    <div id="map"></div>
-  </section>`;
-
-  // === RESERVOIRS ===
-  html += `<section>
-    <div class="section-head">
-      <i data-lucide="droplets"></i>
-      <h2>Reservoir Levels</h2>
-    </div>
-    <div class="reservoir-grid">`;
-
-  for (const r of d.reservoirs) {
-    const pct = r.fill_pct;
-    const cls = fillClass(pct);
-    html += `
-      <div class="reservoir-card">
-        <h3><i data-lucide="landmark"></i> ${r.name}</h3>
-        <div class="big-number">${fmt(r.elevation_ft, 1)}<span style="font-size:1rem;font-weight:400;color:var(--muted)"> ft</span></div>
-        <div class="big-label">Surface elevation above NGVD29 \u00b7 ${ago(r.datetime)}</div>
-        ${pct !== null ? `
-        <div>
-          <div class="fill-bar-track">
-            <div class="fill-bar-fill ${cls}" style="width:${pct}%"></div>
-          </div>
-          <div class="fill-ticks">
-            <span>Dead ${fmt(r.dead_pool_ft)}'</span>
-            <span>${fmt(pct, 1)}% usable</span>
-            <span>Full ${fmt(r.full_pool_ft)}'</span>
-          </div>
-        </div>` : ''}
-        <div class="reservoir-detail">
-          <i data-lucide="info"></i>
-          <span>${r.notes}</span>
-        </div>
-      </div>`;
-  }
-  html += `</div></section>`;
-
-  // === SNOWPACK ===
-  const sp = d.snowpack_summary;
-  html += `<section>
-    <div class="section-head">
-      <i data-lucide="snowflake"></i>
-      <h2>Snowpack \u2014 Basin Headwaters</h2>
-    </div>
-    <div class="snowpack-summary">
-      <div class="stat-box">
-        <div class="icon-row"><i data-lucide="thermometer-snowflake"></i></div>
-        <div class="val">${fmt(sp.mean_swe_in, 1)}<span style="font-size:1rem">"</span></div>
-        <div class="lbl">Basin mean SWE</div>
-      </div>
-      <div class="stat-box">
-        <div class="icon-row"><i data-lucide="percent"></i></div>
-        <div class="val" style="color:${devColor(sp.mean_pct_of_median)}">${fmt(sp.mean_pct_of_median, 0)}%</div>
-        <div class="lbl">of median (basin avg)</div>
-      </div>
-      <div class="stat-box">
-        <div class="icon-row"><i data-lucide="radio-tower"></i></div>
-        <div class="val">${sp.stations_reporting}</div>
-        <div class="lbl">Stations reporting</div>
-      </div>
-      <div class="stat-box">
-        <div class="icon-row"><i data-lucide="calendar"></i></div>
-        <div class="val" style="font-size:1.1rem">${sp.date || '\u2014'}</div>
-        <div class="lbl">Data date</div>
-      </div>
-    </div>`;
-
-  const stations = d.snowpack_stations || [];
-  const TOP = 25;
-  html += `
-    <button class="toggle-btn" onclick="toggleStations(this)">
-      <i data-lucide="chevron-down"></i>
-      Show all ${stations.length} stations
-    </button>
-    <table class="data-table">
-      <thead><tr>
-        <th>Station</th><th>State</th><th>Elev (ft)</th>
-        <th>SWE (in)</th><th>% of Median</th><th>Snow depth (in)</th>
-      </tr></thead>
-      <tbody>`;
-
-  stations.forEach((s, i) => {
-    const cls = i >= TOP ? 'hidden extra-station' : '';
-    const dc = devClass(s.pct_of_median);
-    html += `<tr class="${cls}">
-      <td>${s.name || '\u2014'}</td>
-      <td>${s.state || '\u2014'}</td>
-      <td>${fmt(s.elevation_ft)}</td>
-      <td>${s.swe_in !== null ? s.swe_in : '\u2014'}</td>
-      <td><span class="dev-chip ${dc}">${s.pct_of_median !== null ? fmt(s.pct_of_median, 0) + '%' : '\u2014'}</span></td>
-      <td>${s.snow_depth_in !== null ? s.snow_depth_in : '\u2014'}</td>
-    </tr>`;
-  });
-  html += `</tbody></table></section>`;
-
-  // === STREAM GAUGES ===
-  html += `<section>
-    <div class="section-head">
-      <i data-lucide="activity"></i>
-      <h2>Stream Gauges</h2>
-    </div>
-    <table class="data-table">
-      <thead><tr>
-        <th>Station</th><th>State</th>
-        <th>Discharge (cfs)</th><th>% of Median</th><th>Gage height (ft)</th><th>Updated</th>
-      </tr></thead>
-      <tbody>`;
-
-  for (const g of d.gauges) {
-    const p = g.parameters || {};
-    const q = p['00060'];
-    const h = p['00065'];
-    const pct = g.pct_of_median;
-    const dc = devClass(pct);
-    html += `<tr>
-      <td>${g.name}</td>
-      <td>${g.state || '\u2014'}</td>
-      <td class="flow-val" style="color:${devColor(pct)}">${q ? fmt(q.value) : '\u2014'}</td>
-      <td><span class="dev-chip ${dc}">${pct !== null ? fmt(pct, 0) + '%' : '\u2014'}</span></td>
-      <td>${h ? fmt(h.value, 2) : '\u2014'}</td>
-      <td>${ago(q?.datetime || h?.datetime)}</td>
-    </tr>`;
-  }
-
-  html += `</tbody></table></section>`;
-
-  document.getElementById('app').innerHTML = html;
-
-  // Init map after DOM is updated
-  setTimeout(() => initMap(d), 50);
-}
-
-function toggleStations(btn) {
-  const rows = document.querySelectorAll('.extra-station');
-  const hidden = rows[0]?.classList.contains('hidden');
-  rows.forEach(r => r.classList.toggle('hidden', !hidden));
-  const icon = hidden ? 'chevron-up' : 'chevron-down';
-  const label = hidden ? 'Show fewer stations' : `Show all ${rows.length + 25} stations`;
-  btn.innerHTML = `<i data-lucide="${icon}"></i> ${label}`;
-  lucide.createIcons({ nodes: [btn] });
-}
-
-load();
-lucide.createIcons();
+    // Start
+    window.onload = initDashboard;
 </script>
+
 </body>
 </html>
