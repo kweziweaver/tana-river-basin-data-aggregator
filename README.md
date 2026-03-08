@@ -1,55 +1,31 @@
-# Colorado River Basin — Watershed Data Aggregator
+# Tana River Basin — Watershed Data Aggregator
 
-A live data aggregator for the Colorado River Basin, built for the owockibot.xyz bioregional bounty.
-
-**Bounty #237** — "Build a watershed data aggregator for Colorado River Basin"  
-**Reward:** $35 USDC  
-**Claimer:** Nou (Techne / RegenHub, LCA) · 0xC37604A1dD79Ed50A5c2943358db85CB743dd3e2  
-**Live demo:** https://nou-techne.github.io/watershed-data-collection/
+A live data aggregator for the Tana River Basin, contextualizing bioregional infrastructure for Kenya.
 
 ---
 
 ## What It Does
 
-Pulls three streams of public watershed data for the Colorado River Basin and serves a live dashboard:
+Pulls data streams representing the health and status of the Tana River Basin and serves a live dashboard. Currently running a mock data generator (`generate_tana_data.py`) to simulate these streams while live data connectors are developed.
 
-| Data Layer | Source | Update Frequency |
+| Data Layer | Source / Description | Update Frequency |
 |---|---|---|
-| Stream gauges (discharge + gage height) | USGS Water Services API | Twice daily (source updates every 15 min) |
-| Reservoir levels (Lake Powell) | USGS Water Services API | Twice daily (source updates every 15 min) |
-| Snowpack — Snow Water Equivalent | NRCS SNOTEL / AWDB REST API | Twice daily (source updates daily) |
+| River Flow & Levels | Simulated gauges (e.g., Garissa Bridge) | Mocked |
+| Vegetation Health | VCI (Vegetation Condition Index) for counties | Mocked |
+| Headwater Health | Forest cover & streamflow trends | Mocked |
+| Biodiversity | Elephant & Hirola antelope migration | Mocked |
+| Economic Value | Livestock offtake and cold-chain status | Mocked |
+| Governance | CFA and CCRI grants progress | Mocked |
+| Warm Data (TEK) | Somali Indigenous Oracles (Council of Elders) | Mocked |
 
-A GitHub Actions workflow runs twice daily, fetches fresh data from all three sources, writes it to `docs/data.json`, and GitHub Pages serves the live dashboard.
+A process runs and writes the data to `docs/data.json`, and GitHub Pages serves the live dashboard.
 
 ---
 
-## Data Sources
+## Data Sources (Planned & Adapted)
 
-### USGS Water Services API
-Free, no authentication required.  
-Docs: https://waterservices.usgs.gov/
-
-Key sites monitored:
-
-| Site ID | Name | Parameters |
-|---|---|---|
-| 09380000 | Colorado River at Lees Ferry, AZ | Discharge (cfs), Gage height (ft) |
-| 09402500 | Colorado River near Grand Canyon, AZ | Discharge, Gage height |
-| 09421500 | Colorado River below Hoover Dam, AZ-NV | Gage height |
-| 09379900 | Glen Canyon Dam (Lake Powell) | Reservoir elevation (ft) |
-| 09163500 | Colorado River near Colorado-Utah state line | Discharge |
-| 09070500 | Colorado River near Dotsero, CO | Discharge |
-| 09095500 | Colorado River near Cameo, CO | Discharge |
-| 09105000 | Colorado River near Cameo (Glenwood) | Discharge |
-
-### NRCS SNOTEL — AWDB REST API
-Free, no authentication required.  
-Docs: https://wcc.sc.egov.usda.gov/awdbRestApi/swagger-ui/index.html
-
-Pulls Snow Water Equivalent (SWE) and precipitation from SNOTEL stations in HUC basins 14 (Upper Colorado) and 15 (Lower Colorado). Currently ~100+ active stations across Colorado, Utah, Wyoming, and New Mexico headwaters.
-
-### Bureau of Reclamation (via USGS)
-Lake Powell and Lake Mead reservoir elevation data accessed via USGS gauge sites co-located with the dams. No authentication required.
+### River Gauges & Reservoirs
+Scripts to fetch live gauges (`fetch_gauges.py`) and reservoirs (`fetch_reservoirs.py`) are retained from a previous architecture and can be adapted to pull from the Water Resources Authority (WRA) or public satellite data once APIs are accessible.
 
 ---
 
@@ -58,16 +34,16 @@ Lake Powell and Lake Mead reservoir elevation data accessed via USGS gauge sites
 ```
 watershed-data-collection/
 ├── src/
-│   ├── fetch_gauges.py        # USGS stream gauge fetcher
-│   ├── fetch_snowpack.py      # NRCS SNOTEL fetcher
-│   ├── fetch_reservoirs.py    # USGS reservoir elevation fetcher
-│   └── aggregate.py           # Combines all sources → docs/data.json
+│   ├── generate_tana_data.py  # Mock data generator for Tana Basin
+│   ├── fetch_gauges.py        # Stream gauge fetcher (to be adapted)
+│   ├── fetch_reservoirs.py    # Reservoir elevation fetcher (to be adapted)
+│   └── aggregate.py           # Legacy aggregator script
 ├── docs/
 │   ├── index.html             # Live dashboard (GitHub Pages)
 │   └── data.json              # Latest aggregated data snapshot
 ├── .github/
 │   └── workflows/
-│       └── update-data.yml    # Twice-daily refresh via GitHub Actions
+│       └── update-data.yml    # Data refresh workflow via GitHub Actions
 └── requirements.txt
 ```
 
@@ -77,7 +53,7 @@ watershed-data-collection/
 
 ```bash
 pip install -r requirements.txt
-python src/aggregate.py
+python src/generate_tana_data.py
 # Writes fresh data to docs/data.json
 # Open docs/index.html in a browser
 ```
@@ -86,14 +62,10 @@ python src/aggregate.py
 
 ## Relation to Bioregional Infrastructure
 
-This tool is a unit of the knowledge commons described in the owockibot bioregional thesis. Every fetch enriches a shared, verifiable, queryable dataset for the Colorado River Basin. The JSON output is structured to be:
+This tool is a unit of the knowledge commons. Every fetch enriches a shared, verifiable, queryable dataset for the Tana River Basin. The JSON output is structured to be:
 
-- Machine-readable (for AI agents)
+- Machine-readable (for AI agents like the Energy Trust Engine)
 - Human-readable (for the dashboard)
 - Composable (for future aggregation into basin-wide indicators)
 
-This is the data layer that a Bioregional Financing Facility would need to track outcomes: reservoir levels, watershed health, snowpack as a forward indicator of spring runoff.
-
----
-
-Built by [Nou](https://github.com/nou-techne) · [Techne / RegenHub, LCA](https://regenhub.xyz) · Boulder, Colorado
+This is the data layer that a Bioregional Financing Facility would need to track outcomes: river levels, watershed health, and social-ecological indicators.

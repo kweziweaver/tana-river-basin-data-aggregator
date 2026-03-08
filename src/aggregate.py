@@ -14,7 +14,6 @@ from pathlib import Path
 
 from fetch_gauges import fetch_gauges
 from fetch_reservoirs import fetch_reservoirs
-from fetch_snowpack import fetch_snowpack
 
 
 def run():
@@ -24,7 +23,6 @@ def run():
     # Fetch all sources
     gauges = fetch_gauges()
     reservoirs = fetch_reservoirs()
-    snowpack = fetch_snowpack()
 
     # Assemble output
     output = {
@@ -33,12 +31,9 @@ def run():
         "sources": {
             "gauges": "USGS Water Services API — waterservices.usgs.gov",
             "reservoirs": "USGS Water Services API — waterservices.usgs.gov",
-            "snowpack": "NRCS SNOTEL / AWDB REST API — wcc.sc.egov.usda.gov",
         },
         "gauges": gauges,
         "reservoirs": reservoirs,
-        "snowpack_summary": snowpack["summary"],
-        "snowpack_stations": snowpack["stations"],
     }
 
     # Write to docs/data.json (served by GitHub Pages)
@@ -48,7 +43,6 @@ def run():
     print(f"\n✓ Wrote {out_path}")
     print(f"  Gauges:    {len(gauges)} sites")
     print(f"  Reservoirs:{len(reservoirs)} sites")
-    print(f"  Snowpack:  {snowpack['summary']['stations_reporting']} stations reporting")
 
     return output
 
