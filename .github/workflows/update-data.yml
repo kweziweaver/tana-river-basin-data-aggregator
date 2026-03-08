@@ -25,7 +25,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Fetch watershed data
-        run: cd src && python aggregate.py
+        run: cd src && python generate_tana_data.py
 
       - name: Commit and push updated data
         run: |
