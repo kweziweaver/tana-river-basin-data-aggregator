@@ -1,6 +1,7 @@
 # Tana River Basin — Watershed Data Aggregator
 
 A live data aggregator for the Tana River Basin, contextualizing bioregional infrastructure for Kenya.
+This is a fork of the Colorado River Basin Data Aggregator by Nou-Techne (https://github.com/nou-techne/watershed-data-collection)
 
 ---
 
