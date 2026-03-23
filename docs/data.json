@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-03-22T19:15:40.069137+00:00",
+  "fetched_at": "2026-03-23T08:38:17.388714+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 4.23,
+      "water_level_m": 4.65,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 431.7,
+      "discharge_m3s": 410.7,
       "status": "Normal",
-      "updated_at": "2026-03-22T08:15:40.069137+00:00"
+      "updated_at": "2026-03-23T05:38:17.388714+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 28.7,
-      "status": "Severe Drought",
-      "updated_at": "2026-03-21T19:15:40.069137+00:00"
+      "vci_score": 50.5,
+      "status": "Normal",
+      "updated_at": "2026-03-23T08:38:17.388714+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 36.5,
+      "vci_score": 40.7,
       "status": "Moderate Drought",
-      "updated_at": "2026-03-21T19:15:40.069137+00:00"
+      "updated_at": "2026-03-23T08:38:17.388714+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 46.6,
-      "status": "Moderate Drought",
-      "updated_at": "2026-03-21T19:15:40.069137+00:00"
+      "vci_score": 27.2,
+      "status": "Severe Drought",
+      "updated_at": "2026-03-21T08:38:17.388714+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 21.4,
-    "streamflow_trend": "Stable",
-    "deforestation_alerts": 4,
-    "updated_at": "2026-03-19T19:15:40.069137+00:00"
+    "forest_cover_pct": 16.1,
+    "streamflow_trend": "Improving",
+    "deforestation_alerts": 1,
+    "updated_at": "2026-03-21T08:38:17.388714+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 17,
+      "tracked_individuals": 19,
       "location_cluster": {
-        "latitude": -0.9258,
-        "longitude": 39.4207
+        "latitude": -0.6231,
+        "longitude": 39.5771
       },
       "movement_status": "Stationary",
-      "updated_at": "2026-03-22T16:15:40.069137+00:00"
+      "updated_at": "2026-03-23T04:38:17.388714+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 48,
+      "tracked_individuals": 71,
       "location_cluster": {
-        "latitude": -1.3654,
-        "longitude": 40.4526
+        "latitude": -1.2498,
+        "longitude": 40.2201
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-03-20T19:15:40.069137+00:00"
+      "updated_at": "2026-03-21T08:38:17.388714+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 778,
-    "average_price_kes": 31411,
+    "livestock_offtake_daily": 854,
+    "average_price_kes": 34131,
     "cold_chain_nodes_active": 15,
-    "solar_uptime_pct": 95.8,
-    "updated_at": "2026-03-22T19:15:40.069137+00:00"
+    "solar_uptime_pct": 97.9,
+    "updated_at": "2026-03-23T08:38:17.388714+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 5907916,
+    "ccri_grants_allocated_kes": 15935130,
     "cfa_restructuring_status": "Phase 1 Complete",
-    "active_community_forest_associations": 15,
-    "updated_at": "2026-03-05T19:15:40.069137+00:00"
+    "active_community_forest_associations": 24,
+    "updated_at": "2026-03-08T08:38:17.388714+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
-    "seasonal_forecast": "High likelihood of flash floods in lower basin; move livestock to higher ground.",
-    "community_sentiment": "Preparing Action",
-    "updated_at": "2026-02-27T19:15:40.069137+00:00"
+    "seasonal_forecast": "Favorable rains indicated by local flora indicators; prepare for planting.",
+    "community_sentiment": "Concerned (Drought)",
+    "updated_at": "2026-02-23T08:38:17.388714+00:00"
   }
 }
