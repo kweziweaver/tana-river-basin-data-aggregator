@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-03-26T20:00:10.243575+00:00",
+  "fetched_at": "2026-03-27T08:08:45.453048+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 4.24,
+      "water_level_m": 4.47,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 276.0,
+      "discharge_m3s": 334.5,
       "status": "Normal",
-      "updated_at": "2026-03-26T10:00:10.243575+00:00"
+      "updated_at": "2026-03-27T07:08:45.453048+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 39.7,
+      "vci_score": 42.1,
       "status": "Moderate Drought",
-      "updated_at": "2026-03-26T20:00:10.243575+00:00"
+      "updated_at": "2026-03-27T08:08:45.453048+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 20.7,
+      "vci_score": 25.3,
       "status": "Severe Drought",
-      "updated_at": "2026-03-24T20:00:10.243575+00:00"
+      "updated_at": "2026-03-25T08:08:45.453048+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 58.8,
-      "status": "Normal",
-      "updated_at": "2026-03-25T20:00:10.243575+00:00"
+      "vci_score": 43.8,
+      "status": "Moderate Drought",
+      "updated_at": "2026-03-26T08:08:45.453048+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 23.9,
+    "forest_cover_pct": 23.0,
     "streamflow_trend": "Declining",
-    "deforestation_alerts": 2,
-    "updated_at": "2026-03-22T20:00:10.243575+00:00"
+    "deforestation_alerts": 3,
+    "updated_at": "2026-03-26T08:08:45.453048+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 15,
+      "tracked_individuals": 26,
       "location_cluster": {
-        "latitude": -0.8331,
-        "longitude": 39.446
+        "latitude": -0.6833,
+        "longitude": 39.0328
       },
       "movement_status": "Stationary",
-      "updated_at": "2026-03-26T16:00:10.243575+00:00"
+      "updated_at": "2026-03-27T04:08:45.453048+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 60,
+      "tracked_individuals": 41,
       "location_cluster": {
-        "latitude": -1.3526,
-        "longitude": 40.3562
+        "latitude": -1.2612,
+        "longitude": 40.3773
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-03-25T20:00:10.243575+00:00"
+      "updated_at": "2026-03-26T08:08:45.453048+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 908,
-    "average_price_kes": 35094,
-    "cold_chain_nodes_active": 14,
-    "solar_uptime_pct": 94.4,
-    "updated_at": "2026-03-26T20:00:10.243575+00:00"
+    "livestock_offtake_daily": 797,
+    "average_price_kes": 30879,
+    "cold_chain_nodes_active": 15,
+    "solar_uptime_pct": 98.2,
+    "updated_at": "2026-03-27T08:08:45.453048+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 18105490,
-    "cfa_restructuring_status": "Planning",
-    "active_community_forest_associations": 12,
-    "updated_at": "2026-03-06T20:00:10.243575+00:00"
+    "ccri_grants_allocated_kes": 11082240,
+    "cfa_restructuring_status": "Phase 1 Complete",
+    "active_community_forest_associations": 23,
+    "updated_at": "2026-03-14T08:08:45.453048+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
-    "seasonal_forecast": "High likelihood of flash floods in lower basin; move livestock to higher ground.",
-    "community_sentiment": "Preparing Action",
-    "updated_at": "2026-03-02T20:00:10.243575+00:00"
+    "seasonal_forecast": "Favorable rains indicated by local flora indicators; prepare for planting.",
+    "community_sentiment": "Cautiously Optimistic",
+    "updated_at": "2026-03-01T08:08:45.453048+00:00"
   }
 }
