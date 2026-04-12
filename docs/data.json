@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-04-11T18:49:14.644949+00:00",
+  "fetched_at": "2026-04-12T07:05:23.399685+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 4.49,
+      "water_level_m": 4.58,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 277.9,
+      "discharge_m3s": 247.4,
       "status": "Normal",
-      "updated_at": "2026-04-11T07:49:14.644949+00:00"
+      "updated_at": "2026-04-11T21:05:23.399685+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 32.6,
-      "status": "Severe Drought",
-      "updated_at": "2026-04-11T18:49:14.644949+00:00"
+      "vci_score": 47.1,
+      "status": "Moderate Drought",
+      "updated_at": "2026-04-12T07:05:23.399685+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 25.8,
+      "vci_score": 32.1,
       "status": "Severe Drought",
-      "updated_at": "2026-04-10T18:49:14.644949+00:00"
+      "updated_at": "2026-04-10T07:05:23.399685+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 52.7,
+      "vci_score": 52.9,
       "status": "Normal",
-      "updated_at": "2026-04-10T18:49:14.644949+00:00"
+      "updated_at": "2026-04-10T07:05:23.399685+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 19.3,
-    "streamflow_trend": "Improving",
-    "deforestation_alerts": 2,
-    "updated_at": "2026-04-07T18:49:14.644949+00:00"
+    "forest_cover_pct": 23.8,
+    "streamflow_trend": "Stable",
+    "deforestation_alerts": 3,
+    "updated_at": "2026-04-09T07:05:23.399685+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 12,
+      "tracked_individuals": 21,
       "location_cluster": {
-        "latitude": -0.7219,
-        "longitude": 39.4975
+        "latitude": -0.788,
+        "longitude": 39.5701
       },
-      "movement_status": "Stationary",
-      "updated_at": "2026-04-11T08:49:14.644949+00:00"
+      "movement_status": "Migrating South",
+      "updated_at": "2026-04-11T23:05:23.399685+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 79,
+      "tracked_individuals": 73,
       "location_cluster": {
-        "latitude": -1.2778,
-        "longitude": 40.3755
+        "latitude": -1.259,
+        "longitude": 40.1193
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-04-09T18:49:14.644949+00:00"
+      "updated_at": "2026-04-12T07:05:23.399685+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 799,
-    "average_price_kes": 37882,
-    "cold_chain_nodes_active": 12,
-    "solar_uptime_pct": 99.3,
-    "updated_at": "2026-04-11T18:49:14.644949+00:00"
+    "livestock_offtake_daily": 951,
+    "average_price_kes": 40568,
+    "cold_chain_nodes_active": 10,
+    "solar_uptime_pct": 93.1,
+    "updated_at": "2026-04-12T07:05:23.399685+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 8498385,
-    "cfa_restructuring_status": "Planning",
-    "active_community_forest_associations": 17,
-    "updated_at": "2026-03-30T18:49:14.644949+00:00"
+    "ccri_grants_allocated_kes": 10066203,
+    "cfa_restructuring_status": "Phase 1 Complete",
+    "active_community_forest_associations": 19,
+    "updated_at": "2026-04-01T07:05:23.399685+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
     "seasonal_forecast": "Delayed short rains expected; conserve dry-season grazing areas.",
     "community_sentiment": "Cautiously Optimistic",
-    "updated_at": "2026-03-14T18:49:14.644949+00:00"
+    "updated_at": "2026-03-13T07:05:23.399685+00:00"
   }
 }
