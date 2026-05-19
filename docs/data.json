@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-05-18T19:46:03.611558+00:00",
+  "fetched_at": "2026-05-19T09:29:07.051065+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 2.9,
+      "water_level_m": 3.41,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 181.3,
+      "discharge_m3s": 333.3,
       "status": "Normal",
-      "updated_at": "2026-05-18T15:46:03.611558+00:00"
+      "updated_at": "2026-05-19T00:29:07.051065+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 34.5,
-      "status": "Severe Drought",
-      "updated_at": "2026-05-18T19:46:03.611558+00:00"
+      "vci_score": 53.5,
+      "status": "Normal",
+      "updated_at": "2026-05-19T09:29:07.051065+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 31.1,
+      "vci_score": 28.5,
       "status": "Severe Drought",
-      "updated_at": "2026-05-16T19:46:03.611558+00:00"
+      "updated_at": "2026-05-18T09:29:07.051065+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 58.7,
+      "vci_score": 52.1,
       "status": "Normal",
-      "updated_at": "2026-05-17T19:46:03.611558+00:00"
+      "updated_at": "2026-05-19T09:29:07.051065+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 20.8,
-    "streamflow_trend": "Declining",
-    "deforestation_alerts": 4,
-    "updated_at": "2026-05-13T19:46:03.611558+00:00"
+    "forest_cover_pct": 21.7,
+    "streamflow_trend": "Stable",
+    "deforestation_alerts": 1,
+    "updated_at": "2026-05-18T09:29:07.051065+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 21,
+      "tracked_individuals": 22,
       "location_cluster": {
-        "latitude": -0.7022,
-        "longitude": 39.6368
+        "latitude": -0.8547,
+        "longitude": 39.0924
       },
-      "movement_status": "Foraging",
-      "updated_at": "2026-05-18T13:46:03.611558+00:00"
+      "movement_status": "Migrating South",
+      "updated_at": "2026-05-19T07:29:07.051065+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 75,
+      "tracked_individuals": 52,
       "location_cluster": {
-        "latitude": -1.3035,
-        "longitude": 40.3661
+        "latitude": -1.2103,
+        "longitude": 40.1722
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-05-16T19:46:03.611558+00:00"
+      "updated_at": "2026-05-19T09:29:07.051065+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 957,
-    "average_price_kes": 41570,
-    "cold_chain_nodes_active": 9,
-    "solar_uptime_pct": 96.8,
-    "updated_at": "2026-05-18T19:46:03.611558+00:00"
+    "livestock_offtake_daily": 526,
+    "average_price_kes": 40450,
+    "cold_chain_nodes_active": 8,
+    "solar_uptime_pct": 97.5,
+    "updated_at": "2026-05-19T09:29:07.051065+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 17058435,
-    "cfa_restructuring_status": "Phase 1 Complete",
-    "active_community_forest_associations": 16,
-    "updated_at": "2026-05-08T19:46:03.611558+00:00"
+    "ccri_grants_allocated_kes": 15076490,
+    "cfa_restructuring_status": "Planning",
+    "active_community_forest_associations": 15,
+    "updated_at": "2026-05-07T09:29:07.051065+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
-    "seasonal_forecast": "Favorable rains indicated by local flora indicators; prepare for planting.",
+    "seasonal_forecast": "High likelihood of flash floods in lower basin; move livestock to higher ground.",
     "community_sentiment": "Cautiously Optimistic",
-    "updated_at": "2026-04-20T19:46:03.611558+00:00"
+    "updated_at": "2026-04-24T09:29:07.051065+00:00"
   }
 }
