@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-06-26T19:49:44.436922+00:00",
+  "fetched_at": "2026-06-27T08:27:35.242244+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 2.88,
+      "water_level_m": 2.64,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 323.8,
-      "status": "Normal",
-      "updated_at": "2026-06-26T17:49:44.436922+00:00"
+      "discharge_m3s": 417.5,
+      "status": "Alert",
+      "updated_at": "2026-06-27T06:27:35.242244+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 30.8,
+      "vci_score": 26.4,
       "status": "Severe Drought",
-      "updated_at": "2026-06-25T19:49:44.436922+00:00"
+      "updated_at": "2026-06-25T08:27:35.242244+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 47.9,
-      "status": "Moderate Drought",
-      "updated_at": "2026-06-25T19:49:44.436922+00:00"
+      "vci_score": 25.7,
+      "status": "Severe Drought",
+      "updated_at": "2026-06-27T08:27:35.242244+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 20.7,
-      "status": "Severe Drought",
-      "updated_at": "2026-06-24T19:49:44.436922+00:00"
+      "vci_score": 57.5,
+      "status": "Normal",
+      "updated_at": "2026-06-25T08:27:35.242244+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 20.6,
+    "forest_cover_pct": 16.4,
     "streamflow_trend": "Stable",
-    "deforestation_alerts": 4,
-    "updated_at": "2026-06-25T19:49:44.436922+00:00"
+    "deforestation_alerts": 3,
+    "updated_at": "2026-06-24T08:27:35.242244+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 22,
+      "tracked_individuals": 26,
       "location_cluster": {
-        "latitude": -0.9442,
-        "longitude": 39.4949
+        "latitude": -0.5885,
+        "longitude": 39.2148
       },
-      "movement_status": "Migrating South",
-      "updated_at": "2026-06-26T10:49:44.436922+00:00"
+      "movement_status": "Foraging",
+      "updated_at": "2026-06-27T01:27:35.242244+00:00"
     },
     {
       "species": "Hirola Antelope",
       "tracked_individuals": 58,
       "location_cluster": {
-        "latitude": -1.2781,
-        "longitude": 40.166
+        "latitude": -1.4718,
+        "longitude": 40.0926
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-06-24T19:49:44.436922+00:00"
+      "updated_at": "2026-06-25T08:27:35.242244+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 1120,
-    "average_price_kes": 34215,
-    "cold_chain_nodes_active": 11,
-    "solar_uptime_pct": 93.8,
-    "updated_at": "2026-06-26T19:49:44.436922+00:00"
+    "livestock_offtake_daily": 652,
+    "average_price_kes": 43079,
+    "cold_chain_nodes_active": 10,
+    "solar_uptime_pct": 98.5,
+    "updated_at": "2026-06-27T08:27:35.242244+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 17257351,
+    "ccri_grants_allocated_kes": 13242148,
     "cfa_restructuring_status": "Phase 1 Complete",
-    "active_community_forest_associations": 24,
-    "updated_at": "2026-06-12T19:49:44.436922+00:00"
+    "active_community_forest_associations": 17,
+    "updated_at": "2026-06-07T08:27:35.242244+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
-    "seasonal_forecast": "High likelihood of flash floods in lower basin; move livestock to higher ground.",
-    "community_sentiment": "Cautiously Optimistic",
-    "updated_at": "2026-06-02T19:49:44.436922+00:00"
+    "seasonal_forecast": "Delayed short rains expected; conserve dry-season grazing areas.",
+    "community_sentiment": "Preparing Action",
+    "updated_at": "2026-06-01T08:27:35.242244+00:00"
   }
 }
