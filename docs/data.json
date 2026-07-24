@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-07-23T19:19:07.142473+00:00",
+  "fetched_at": "2026-07-24T08:10:59.513735+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 4.67,
+      "water_level_m": 4.18,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 212.3,
+      "discharge_m3s": 230.4,
       "status": "Normal",
-      "updated_at": "2026-07-23T11:19:07.142473+00:00"
+      "updated_at": "2026-07-24T04:10:59.513735+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 29.0,
-      "status": "Severe Drought",
-      "updated_at": "2026-07-23T19:19:07.142473+00:00"
+      "vci_score": 38.2,
+      "status": "Moderate Drought",
+      "updated_at": "2026-07-22T08:10:59.513735+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 59.3,
+      "vci_score": 50.1,
       "status": "Normal",
-      "updated_at": "2026-07-22T19:19:07.142473+00:00"
+      "updated_at": "2026-07-22T08:10:59.513735+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 48.0,
+      "vci_score": 35.1,
       "status": "Moderate Drought",
-      "updated_at": "2026-07-23T19:19:07.142473+00:00"
+      "updated_at": "2026-07-23T08:10:59.513735+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 24.5,
+    "forest_cover_pct": 22.4,
     "streamflow_trend": "Improving",
-    "deforestation_alerts": 3,
-    "updated_at": "2026-07-19T19:19:07.142473+00:00"
+    "deforestation_alerts": 0,
+    "updated_at": "2026-07-23T08:10:59.513735+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 29,
+      "tracked_individuals": 16,
       "location_cluster": {
-        "latitude": -0.9019,
-        "longitude": 39.7971
+        "latitude": -0.5431,
+        "longitude": 39.795
       },
-      "movement_status": "Stationary",
-      "updated_at": "2026-07-23T17:19:07.142473+00:00"
+      "movement_status": "Foraging",
+      "updated_at": "2026-07-24T04:10:59.513735+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 51,
+      "tracked_individuals": 72,
       "location_cluster": {
-        "latitude": -1.3888,
-        "longitude": 40.3436
+        "latitude": -1.4946,
+        "longitude": 40.1323
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-07-22T19:19:07.142473+00:00"
+      "updated_at": "2026-07-24T08:10:59.513735+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 989,
-    "average_price_kes": 42994,
-    "cold_chain_nodes_active": 9,
-    "solar_uptime_pct": 95.0,
-    "updated_at": "2026-07-23T19:19:07.142473+00:00"
+    "livestock_offtake_daily": 1125,
+    "average_price_kes": 37110,
+    "cold_chain_nodes_active": 11,
+    "solar_uptime_pct": 93.3,
+    "updated_at": "2026-07-24T08:10:59.513735+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 11620303,
+    "ccri_grants_allocated_kes": 18877822,
     "cfa_restructuring_status": "In Progress",
-    "active_community_forest_associations": 23,
-    "updated_at": "2026-07-03T19:19:07.142473+00:00"
+    "active_community_forest_associations": 12,
+    "updated_at": "2026-07-08T08:10:59.513735+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
-    "seasonal_forecast": "High likelihood of flash floods in lower basin; move livestock to higher ground.",
+    "seasonal_forecast": "Favorable rains indicated by local flora indicators; prepare for planting.",
     "community_sentiment": "Preparing Action",
-    "updated_at": "2026-06-26T19:19:07.142473+00:00"
+    "updated_at": "2026-06-30T08:10:59.513735+00:00"
   }
 }
