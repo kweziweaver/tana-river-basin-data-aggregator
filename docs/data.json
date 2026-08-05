@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-08-05T08:22:01.052185+00:00",
+  "fetched_at": "2026-08-05T19:35:48.998229+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 3.97,
+      "water_level_m": 3.42,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 382.4,
-      "status": "Normal",
-      "updated_at": "2026-08-05T04:22:01.052185+00:00"
+      "discharge_m3s": 263.4,
+      "status": "Alert",
+      "updated_at": "2026-08-05T16:35:48.998229+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 50.5,
-      "status": "Normal",
-      "updated_at": "2026-08-04T08:22:01.052185+00:00"
+      "vci_score": 35.2,
+      "status": "Moderate Drought",
+      "updated_at": "2026-08-04T19:35:48.998229+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 57.2,
-      "status": "Normal",
-      "updated_at": "2026-08-04T08:22:01.052185+00:00"
+      "vci_score": 42.5,
+      "status": "Moderate Drought",
+      "updated_at": "2026-08-03T19:35:48.998229+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 43.9,
-      "status": "Moderate Drought",
-      "updated_at": "2026-08-04T08:22:01.052185+00:00"
+      "vci_score": 21.3,
+      "status": "Severe Drought",
+      "updated_at": "2026-08-05T19:35:48.998229+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 17.6,
-    "streamflow_trend": "Declining",
+    "forest_cover_pct": 19.7,
+    "streamflow_trend": "Stable",
     "deforestation_alerts": 4,
-    "updated_at": "2026-08-01T08:22:01.052185+00:00"
+    "updated_at": "2026-07-31T19:35:48.998229+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 15,
+      "tracked_individuals": 19,
       "location_cluster": {
-        "latitude": -0.9093,
-        "longitude": 39.6663
+        "latitude": -0.6996,
+        "longitude": 39.5277
       },
       "movement_status": "Foraging",
-      "updated_at": "2026-08-05T02:22:01.052185+00:00"
+      "updated_at": "2026-08-05T18:35:48.998229+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 52,
+      "tracked_individuals": 61,
       "location_cluster": {
-        "latitude": -1.3594,
-        "longitude": 40.383
+        "latitude": -1.3147,
+        "longitude": 40.0424
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-08-03T08:22:01.052185+00:00"
+      "updated_at": "2026-08-05T19:35:48.998229+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 911,
-    "average_price_kes": 31599,
-    "cold_chain_nodes_active": 12,
-    "solar_uptime_pct": 98.3,
-    "updated_at": "2026-08-05T08:22:01.052185+00:00"
+    "livestock_offtake_daily": 797,
+    "average_price_kes": 37268,
+    "cold_chain_nodes_active": 10,
+    "solar_uptime_pct": 93.0,
+    "updated_at": "2026-08-05T19:35:48.998229+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 13196946,
-    "cfa_restructuring_status": "Planning",
-    "active_community_forest_associations": 11,
-    "updated_at": "2026-07-18T08:22:01.052185+00:00"
+    "ccri_grants_allocated_kes": 16207372,
+    "cfa_restructuring_status": "In Progress",
+    "active_community_forest_associations": 20,
+    "updated_at": "2026-07-22T19:35:48.998229+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
-    "seasonal_forecast": "Delayed short rains expected; conserve dry-season grazing areas.",
-    "community_sentiment": "Preparing Action",
-    "updated_at": "2026-07-21T08:22:01.052185+00:00"
+    "seasonal_forecast": "Favorable rains indicated by local flora indicators; prepare for planting.",
+    "community_sentiment": "Concerned (Drought)",
+    "updated_at": "2026-07-11T19:35:48.998229+00:00"
   }
 }
