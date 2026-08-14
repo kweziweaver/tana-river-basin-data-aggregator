@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-08-14T07:12:22.830606+00:00",
+  "fetched_at": "2026-08-14T18:54:51.103554+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 4.52,
+      "water_level_m": 3.49,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 267.7,
+      "discharge_m3s": 180.6,
       "status": "Normal",
-      "updated_at": "2026-08-13T22:12:22.830606+00:00"
+      "updated_at": "2026-08-14T12:54:51.103554+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 28.8,
+      "vci_score": 34.6,
       "status": "Severe Drought",
-      "updated_at": "2026-08-12T07:12:22.830606+00:00"
+      "updated_at": "2026-08-14T18:54:51.103554+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 55.3,
+      "vci_score": 56.8,
       "status": "Normal",
-      "updated_at": "2026-08-14T07:12:22.830606+00:00"
+      "updated_at": "2026-08-14T18:54:51.103554+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 25.7,
-      "status": "Severe Drought",
-      "updated_at": "2026-08-12T07:12:22.830606+00:00"
+      "vci_score": 40.2,
+      "status": "Moderate Drought",
+      "updated_at": "2026-08-14T18:54:51.103554+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 20.7,
-    "streamflow_trend": "Stable",
+    "forest_cover_pct": 23.4,
+    "streamflow_trend": "Improving",
     "deforestation_alerts": 0,
-    "updated_at": "2026-08-10T07:12:22.830606+00:00"
+    "updated_at": "2026-08-10T18:54:51.103554+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 24,
+      "tracked_individuals": 28,
       "location_cluster": {
-        "latitude": -0.8151,
-        "longitude": 39.3569
+        "latitude": -0.6794,
+        "longitude": 39.6717
       },
       "movement_status": "Stationary",
-      "updated_at": "2026-08-14T01:12:22.830606+00:00"
+      "updated_at": "2026-08-14T10:54:51.103554+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 62,
+      "tracked_individuals": 51,
       "location_cluster": {
-        "latitude": -1.3802,
-        "longitude": 40.0818
+        "latitude": -1.3576,
+        "longitude": 40.4054
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-08-14T07:12:22.830606+00:00"
+      "updated_at": "2026-08-12T18:54:51.103554+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 826,
-    "average_price_kes": 43814,
-    "cold_chain_nodes_active": 10,
-    "solar_uptime_pct": 92.1,
-    "updated_at": "2026-08-14T07:12:22.830606+00:00"
+    "livestock_offtake_daily": 1163,
+    "average_price_kes": 37726,
+    "cold_chain_nodes_active": 11,
+    "solar_uptime_pct": 96.5,
+    "updated_at": "2026-08-14T18:54:51.103554+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 8960436,
-    "cfa_restructuring_status": "Planning",
-    "active_community_forest_associations": 19,
-    "updated_at": "2026-07-30T07:12:22.830606+00:00"
+    "ccri_grants_allocated_kes": 7047315,
+    "cfa_restructuring_status": "In Progress",
+    "active_community_forest_associations": 17,
+    "updated_at": "2026-08-02T18:54:51.103554+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
     "seasonal_forecast": "High likelihood of flash floods in lower basin; move livestock to higher ground.",
-    "community_sentiment": "Concerned (Drought)",
-    "updated_at": "2026-07-21T07:12:22.830606+00:00"
+    "community_sentiment": "Preparing Action",
+    "updated_at": "2026-08-03T18:54:51.103554+00:00"
   }
 }
