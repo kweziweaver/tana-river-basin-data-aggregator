@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-08-23T18:30:41.624698+00:00",
+  "fetched_at": "2026-08-24T06:39:27.130777+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 2.86,
+      "water_level_m": 4.69,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 393.6,
-      "status": "Normal",
-      "updated_at": "2026-08-23T10:30:41.624698+00:00"
+      "discharge_m3s": 268.8,
+      "status": "Alert",
+      "updated_at": "2026-08-24T01:39:27.130777+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 57.4,
-      "status": "Normal",
-      "updated_at": "2026-08-23T18:30:41.624698+00:00"
+      "vci_score": 21.2,
+      "status": "Severe Drought",
+      "updated_at": "2026-08-24T06:39:27.130777+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 44.8,
-      "status": "Moderate Drought",
-      "updated_at": "2026-08-23T18:30:41.624698+00:00"
+      "vci_score": 29.5,
+      "status": "Severe Drought",
+      "updated_at": "2026-08-24T06:39:27.130777+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 33.7,
-      "status": "Severe Drought",
-      "updated_at": "2026-08-21T18:30:41.624698+00:00"
+      "vci_score": 40.4,
+      "status": "Moderate Drought",
+      "updated_at": "2026-08-24T06:39:27.130777+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 15.6,
-    "streamflow_trend": "Declining",
-    "deforestation_alerts": 0,
-    "updated_at": "2026-08-22T18:30:41.624698+00:00"
+    "forest_cover_pct": 23.1,
+    "streamflow_trend": "Stable",
+    "deforestation_alerts": 4,
+    "updated_at": "2026-08-23T06:39:27.130777+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 30,
+      "tracked_individuals": 28,
       "location_cluster": {
-        "latitude": -0.8143,
-        "longitude": 39.1991
+        "latitude": -0.8276,
+        "longitude": 39.339
       },
-      "movement_status": "Foraging",
-      "updated_at": "2026-08-23T12:30:41.624698+00:00"
+      "movement_status": "Stationary",
+      "updated_at": "2026-08-23T22:39:27.130777+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 78,
+      "tracked_individuals": 73,
       "location_cluster": {
-        "latitude": -1.4405,
-        "longitude": 40.1225
+        "latitude": -1.388,
+        "longitude": 40.0092
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-08-22T18:30:41.624698+00:00"
+      "updated_at": "2026-08-24T06:39:27.130777+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 853,
-    "average_price_kes": 38082,
-    "cold_chain_nodes_active": 8,
-    "solar_uptime_pct": 93.2,
-    "updated_at": "2026-08-23T18:30:41.624698+00:00"
+    "livestock_offtake_daily": 775,
+    "average_price_kes": 41509,
+    "cold_chain_nodes_active": 14,
+    "solar_uptime_pct": 98.9,
+    "updated_at": "2026-08-24T06:39:27.130777+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 16282148,
-    "cfa_restructuring_status": "In Progress",
-    "active_community_forest_associations": 17,
-    "updated_at": "2026-08-05T18:30:41.624698+00:00"
+    "ccri_grants_allocated_kes": 5045501,
+    "cfa_restructuring_status": "Phase 1 Complete",
+    "active_community_forest_associations": 24,
+    "updated_at": "2026-08-18T06:39:27.130777+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
-    "seasonal_forecast": "Favorable rains indicated by local flora indicators; prepare for planting.",
+    "seasonal_forecast": "High likelihood of flash floods in lower basin; move livestock to higher ground.",
     "community_sentiment": "Cautiously Optimistic",
-    "updated_at": "2026-08-07T18:30:41.624698+00:00"
+    "updated_at": "2026-08-02T06:39:27.130777+00:00"
   }
 }
