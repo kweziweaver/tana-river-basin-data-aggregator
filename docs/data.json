@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-09-01T20:40:48.734275+00:00",
+  "fetched_at": "2026-09-02T10:17:38.155421+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 2.61,
+      "water_level_m": 3.26,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 450.0,
+      "discharge_m3s": 390.3,
       "status": "Normal",
-      "updated_at": "2026-09-01T09:40:48.734275+00:00"
+      "updated_at": "2026-09-02T04:17:38.155421+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 39.5,
+      "vci_score": 35.5,
       "status": "Moderate Drought",
-      "updated_at": "2026-09-01T20:40:48.734275+00:00"
+      "updated_at": "2026-09-02T10:17:38.155421+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 32.2,
-      "status": "Severe Drought",
-      "updated_at": "2026-08-31T20:40:48.734275+00:00"
+      "vci_score": 54.5,
+      "status": "Normal",
+      "updated_at": "2026-09-01T10:17:38.155421+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 49.8,
+      "vci_score": 43.4,
       "status": "Moderate Drought",
-      "updated_at": "2026-09-01T20:40:48.734275+00:00"
+      "updated_at": "2026-09-02T10:17:38.155421+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 18.7,
-    "streamflow_trend": "Declining",
+    "forest_cover_pct": 16.8,
+    "streamflow_trend": "Improving",
     "deforestation_alerts": 4,
-    "updated_at": "2026-08-27T20:40:48.734275+00:00"
+    "updated_at": "2026-08-29T10:17:38.155421+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 16,
+      "tracked_individuals": 24,
       "location_cluster": {
-        "latitude": -0.7775,
-        "longitude": 39.0966
+        "latitude": -0.9065,
+        "longitude": 39.06
       },
       "movement_status": "Stationary",
-      "updated_at": "2026-09-01T14:40:48.734275+00:00"
+      "updated_at": "2026-09-02T04:17:38.155421+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 72,
+      "tracked_individuals": 46,
       "location_cluster": {
-        "latitude": -1.2031,
-        "longitude": 40.2095
+        "latitude": -1.4317,
+        "longitude": 40.0598
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-08-31T20:40:48.734275+00:00"
+      "updated_at": "2026-09-02T10:17:38.155421+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 732,
-    "average_price_kes": 43818,
-    "cold_chain_nodes_active": 13,
-    "solar_uptime_pct": 96.0,
-    "updated_at": "2026-09-01T20:40:48.734275+00:00"
+    "livestock_offtake_daily": 1014,
+    "average_price_kes": 38560,
+    "cold_chain_nodes_active": 15,
+    "solar_uptime_pct": 97.4,
+    "updated_at": "2026-09-02T10:17:38.155421+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 11418901,
-    "cfa_restructuring_status": "In Progress",
-    "active_community_forest_associations": 20,
-    "updated_at": "2026-08-16T20:40:48.734275+00:00"
+    "ccri_grants_allocated_kes": 13617151,
+    "cfa_restructuring_status": "Planning",
+    "active_community_forest_associations": 25,
+    "updated_at": "2026-08-28T10:17:38.155421+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
-    "seasonal_forecast": "Delayed short rains expected; conserve dry-season grazing areas.",
-    "community_sentiment": "Concerned (Drought)",
-    "updated_at": "2026-08-19T20:40:48.734275+00:00"
+    "seasonal_forecast": "Favorable rains indicated by local flora indicators; prepare for planting.",
+    "community_sentiment": "Preparing Action",
+    "updated_at": "2026-08-08T10:17:38.155421+00:00"
   }
 }
