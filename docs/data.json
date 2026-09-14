@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-09-13T20:26:40.492923+00:00",
+  "fetched_at": "2026-09-14T11:21:15.157157+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 2.84,
+      "water_level_m": 3.61,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 440.2,
+      "discharge_m3s": 392.9,
       "status": "Normal",
-      "updated_at": "2026-09-13T17:26:40.492923+00:00"
+      "updated_at": "2026-09-14T10:21:15.157157+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 51.3,
+      "vci_score": 57.9,
       "status": "Normal",
-      "updated_at": "2026-09-12T20:26:40.492923+00:00"
+      "updated_at": "2026-09-14T11:21:15.157157+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 46.3,
-      "status": "Moderate Drought",
-      "updated_at": "2026-09-11T20:26:40.492923+00:00"
+      "vci_score": 53.0,
+      "status": "Normal",
+      "updated_at": "2026-09-13T11:21:15.157157+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 27.5,
-      "status": "Severe Drought",
-      "updated_at": "2026-09-11T20:26:40.492923+00:00"
+      "vci_score": 45.9,
+      "status": "Moderate Drought",
+      "updated_at": "2026-09-13T11:21:15.157157+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 18.7,
-    "streamflow_trend": "Improving",
-    "deforestation_alerts": 1,
-    "updated_at": "2026-09-08T20:26:40.492923+00:00"
+    "forest_cover_pct": 15.3,
+    "streamflow_trend": "Stable",
+    "deforestation_alerts": 4,
+    "updated_at": "2026-09-13T11:21:15.157157+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 17,
+      "tracked_individuals": 27,
       "location_cluster": {
-        "latitude": -0.5213,
-        "longitude": 39.2088
+        "latitude": -0.974,
+        "longitude": 39.2695
       },
-      "movement_status": "Migrating South",
-      "updated_at": "2026-09-13T14:26:40.492923+00:00"
+      "movement_status": "Stationary",
+      "updated_at": "2026-09-14T06:21:15.157157+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 42,
+      "tracked_individuals": 80,
       "location_cluster": {
-        "latitude": -1.483,
-        "longitude": 40.1035
+        "latitude": -1.319,
+        "longitude": 40.4286
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-09-12T20:26:40.492923+00:00"
+      "updated_at": "2026-09-14T11:21:15.157157+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 964,
-    "average_price_kes": 43457,
-    "cold_chain_nodes_active": 14,
-    "solar_uptime_pct": 99.1,
-    "updated_at": "2026-09-13T20:26:40.492923+00:00"
+    "livestock_offtake_daily": 742,
+    "average_price_kes": 35851,
+    "cold_chain_nodes_active": 13,
+    "solar_uptime_pct": 94.2,
+    "updated_at": "2026-09-14T11:21:15.157157+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 17745996,
-    "cfa_restructuring_status": "In Progress",
-    "active_community_forest_associations": 19,
-    "updated_at": "2026-09-02T20:26:40.492923+00:00"
+    "ccri_grants_allocated_kes": 10069115,
+    "cfa_restructuring_status": "Planning",
+    "active_community_forest_associations": 24,
+    "updated_at": "2026-09-04T11:21:15.157157+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
     "seasonal_forecast": "Favorable rains indicated by local flora indicators; prepare for planting.",
-    "community_sentiment": "Cautiously Optimistic",
-    "updated_at": "2026-08-27T20:26:40.492923+00:00"
+    "community_sentiment": "Concerned (Drought)",
+    "updated_at": "2026-08-29T11:21:15.157157+00:00"
   }
 }
