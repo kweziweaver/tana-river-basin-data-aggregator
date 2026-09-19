@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-09-19T10:02:04.583304+00:00",
+  "fetched_at": "2026-09-19T20:10:16.498089+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 4.66,
+      "water_level_m": 3.67,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 226.0,
-      "status": "Normal",
-      "updated_at": "2026-09-19T10:02:04.583304+00:00"
+      "discharge_m3s": 238.1,
+      "status": "Alert",
+      "updated_at": "2026-09-19T11:10:16.498089+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 30.7,
-      "status": "Severe Drought",
-      "updated_at": "2026-09-19T10:02:04.583304+00:00"
+      "vci_score": 52.4,
+      "status": "Normal",
+      "updated_at": "2026-09-19T20:10:16.498089+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 32.2,
-      "status": "Severe Drought",
-      "updated_at": "2026-09-17T10:02:04.583304+00:00"
+      "vci_score": 38.5,
+      "status": "Moderate Drought",
+      "updated_at": "2026-09-17T20:10:16.498089+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 58.9,
-      "status": "Normal",
-      "updated_at": "2026-09-19T10:02:04.583304+00:00"
+      "vci_score": 43.8,
+      "status": "Moderate Drought",
+      "updated_at": "2026-09-17T20:10:16.498089+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 17.7,
+    "forest_cover_pct": 16.4,
     "streamflow_trend": "Declining",
-    "deforestation_alerts": 1,
-    "updated_at": "2026-09-14T10:02:04.583304+00:00"
+    "deforestation_alerts": 0,
+    "updated_at": "2026-09-16T20:10:16.498089+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 23,
+      "tracked_individuals": 27,
       "location_cluster": {
-        "latitude": -0.7905,
-        "longitude": 39.7977
+        "latitude": -0.9077,
+        "longitude": 39.2992
       },
       "movement_status": "Migrating South",
-      "updated_at": "2026-09-19T06:02:04.583304+00:00"
+      "updated_at": "2026-09-19T15:10:16.498089+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 79,
+      "tracked_individuals": 43,
       "location_cluster": {
-        "latitude": -1.2594,
-        "longitude": 40.0062
+        "latitude": -1.4958,
+        "longitude": 40.4105
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-09-18T10:02:04.583304+00:00"
+      "updated_at": "2026-09-19T20:10:16.498089+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 972,
-    "average_price_kes": 38708,
-    "cold_chain_nodes_active": 14,
-    "solar_uptime_pct": 94.4,
-    "updated_at": "2026-09-19T10:02:04.583304+00:00"
+    "livestock_offtake_daily": 1033,
+    "average_price_kes": 35717,
+    "cold_chain_nodes_active": 10,
+    "solar_uptime_pct": 96.2,
+    "updated_at": "2026-09-19T20:10:16.498089+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 18249321,
-    "cfa_restructuring_status": "Phase 1 Complete",
-    "active_community_forest_associations": 19,
-    "updated_at": "2026-09-01T10:02:04.583304+00:00"
+    "ccri_grants_allocated_kes": 12999782,
+    "cfa_restructuring_status": "Planning",
+    "active_community_forest_associations": 11,
+    "updated_at": "2026-09-02T20:10:16.498089+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
-    "seasonal_forecast": "Favorable rains indicated by local flora indicators; prepare for planting.",
-    "community_sentiment": "Cautiously Optimistic",
-    "updated_at": "2026-09-01T10:02:04.583304+00:00"
+    "seasonal_forecast": "High likelihood of flash floods in lower basin; move livestock to higher ground.",
+    "community_sentiment": "Concerned (Drought)",
+    "updated_at": "2026-08-30T20:10:16.498089+00:00"
   }
 }
