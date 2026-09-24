@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-09-24T10:50:37.188729+00:00",
+  "fetched_at": "2026-09-24T21:14:29.736235+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 3.16,
+      "water_level_m": 4.6,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 327.3,
-      "status": "Alert",
-      "updated_at": "2026-09-24T09:50:37.188729+00:00"
+      "discharge_m3s": 248.6,
+      "status": "Normal",
+      "updated_at": "2026-09-24T13:14:29.736235+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 37.7,
-      "status": "Moderate Drought",
-      "updated_at": "2026-09-23T10:50:37.188729+00:00"
+      "vci_score": 56.8,
+      "status": "Normal",
+      "updated_at": "2026-09-24T21:14:29.736235+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 50.0,
-      "status": "Normal",
-      "updated_at": "2026-09-22T10:50:37.188729+00:00"
+      "vci_score": 46.0,
+      "status": "Moderate Drought",
+      "updated_at": "2026-09-24T21:14:29.736235+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 20.5,
-      "status": "Severe Drought",
-      "updated_at": "2026-09-23T10:50:37.188729+00:00"
+      "vci_score": 54.5,
+      "status": "Normal",
+      "updated_at": "2026-09-22T21:14:29.736235+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 22.8,
+    "forest_cover_pct": 16.3,
     "streamflow_trend": "Stable",
-    "deforestation_alerts": 5,
-    "updated_at": "2026-09-22T10:50:37.188729+00:00"
+    "deforestation_alerts": 2,
+    "updated_at": "2026-09-21T21:14:29.736235+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 29,
+      "tracked_individuals": 23,
       "location_cluster": {
-        "latitude": -0.5788,
-        "longitude": 39.4169
+        "latitude": -0.6114,
+        "longitude": 39.7393
       },
-      "movement_status": "Migrating South",
-      "updated_at": "2026-09-24T09:50:37.188729+00:00"
+      "movement_status": "Stationary",
+      "updated_at": "2026-09-24T13:14:29.736235+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 47,
+      "tracked_individuals": 76,
       "location_cluster": {
-        "latitude": -1.265,
-        "longitude": 40.0829
+        "latitude": -1.3679,
+        "longitude": 40.3619
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-09-24T10:50:37.188729+00:00"
+      "updated_at": "2026-09-22T21:14:29.736235+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 703,
-    "average_price_kes": 40162,
-    "cold_chain_nodes_active": 11,
-    "solar_uptime_pct": 98.7,
-    "updated_at": "2026-09-24T10:50:37.188729+00:00"
+    "livestock_offtake_daily": 779,
+    "average_price_kes": 38901,
+    "cold_chain_nodes_active": 13,
+    "solar_uptime_pct": 97.9,
+    "updated_at": "2026-09-24T21:14:29.736235+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 15162737,
+    "ccri_grants_allocated_kes": 16065516,
     "cfa_restructuring_status": "In Progress",
-    "active_community_forest_associations": 23,
-    "updated_at": "2026-09-14T10:50:37.188729+00:00"
+    "active_community_forest_associations": 19,
+    "updated_at": "2026-09-19T21:14:29.736235+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
-    "seasonal_forecast": "Favorable rains indicated by local flora indicators; prepare for planting.",
-    "community_sentiment": "Cautiously Optimistic",
-    "updated_at": "2026-09-05T10:50:37.188729+00:00"
+    "seasonal_forecast": "Delayed short rains expected; conserve dry-season grazing areas.",
+    "community_sentiment": "Preparing Action",
+    "updated_at": "2026-09-01T21:14:29.736235+00:00"
   }
 }
