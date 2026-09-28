@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-09-27T21:00:44.551076+00:00",
+  "fetched_at": "2026-09-28T12:30:07.487379+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 3.02,
+      "water_level_m": 4.58,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 197.3,
-      "status": "Alert",
-      "updated_at": "2026-09-27T11:00:44.551076+00:00"
+      "discharge_m3s": 363.8,
+      "status": "Normal",
+      "updated_at": "2026-09-28T07:30:07.487379+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 21.9,
-      "status": "Severe Drought",
-      "updated_at": "2026-09-26T21:00:44.551076+00:00"
+      "vci_score": 39.7,
+      "status": "Moderate Drought",
+      "updated_at": "2026-09-26T12:30:07.487379+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 34.7,
+      "vci_score": 31.0,
       "status": "Severe Drought",
-      "updated_at": "2026-09-27T21:00:44.551076+00:00"
+      "updated_at": "2026-09-26T12:30:07.487379+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 30.9,
-      "status": "Severe Drought",
-      "updated_at": "2026-09-26T21:00:44.551076+00:00"
+      "vci_score": 58.2,
+      "status": "Normal",
+      "updated_at": "2026-09-27T12:30:07.487379+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 21.0,
+    "forest_cover_pct": 16.5,
     "streamflow_trend": "Stable",
-    "deforestation_alerts": 3,
-    "updated_at": "2026-09-23T21:00:44.551076+00:00"
+    "deforestation_alerts": 5,
+    "updated_at": "2026-09-24T12:30:07.487379+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 20,
+      "tracked_individuals": 16,
       "location_cluster": {
-        "latitude": -0.9575,
-        "longitude": 39.4807
+        "latitude": -0.8006,
+        "longitude": 39.0711
       },
-      "movement_status": "Migrating South",
-      "updated_at": "2026-09-27T12:00:44.551076+00:00"
+      "movement_status": "Stationary",
+      "updated_at": "2026-09-28T07:30:07.487379+00:00"
     },
     {
       "species": "Hirola Antelope",
       "tracked_individuals": 55,
       "location_cluster": {
-        "latitude": -1.2569,
-        "longitude": 40.1717
+        "latitude": -1.493,
+        "longitude": 40.037
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-09-27T21:00:44.551076+00:00"
+      "updated_at": "2026-09-28T12:30:07.487379+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 1064,
-    "average_price_kes": 40380,
-    "cold_chain_nodes_active": 9,
-    "solar_uptime_pct": 94.9,
-    "updated_at": "2026-09-27T21:00:44.551076+00:00"
+    "livestock_offtake_daily": 1035,
+    "average_price_kes": 43553,
+    "cold_chain_nodes_active": 12,
+    "solar_uptime_pct": 95.9,
+    "updated_at": "2026-09-28T12:30:07.487379+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 8583409,
-    "cfa_restructuring_status": "Planning",
-    "active_community_forest_associations": 24,
-    "updated_at": "2026-09-11T21:00:44.551076+00:00"
+    "ccri_grants_allocated_kes": 13421383,
+    "cfa_restructuring_status": "In Progress",
+    "active_community_forest_associations": 18,
+    "updated_at": "2026-09-22T12:30:07.487379+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
-    "seasonal_forecast": "High likelihood of flash floods in lower basin; move livestock to higher ground.",
-    "community_sentiment": "Concerned (Drought)",
-    "updated_at": "2026-09-16T21:00:44.551076+00:00"
+    "seasonal_forecast": "Favorable rains indicated by local flora indicators; prepare for planting.",
+    "community_sentiment": "Preparing Action",
+    "updated_at": "2026-09-12T12:30:07.487379+00:00"
   }
 }
