@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-10-06T22:25:51.098594+00:00",
+  "fetched_at": "2026-10-07T12:23:40.144515+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 3.75,
+      "water_level_m": 3.74,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 182.0,
+      "discharge_m3s": 208.3,
       "status": "Normal",
-      "updated_at": "2026-10-06T18:25:51.098594+00:00"
+      "updated_at": "2026-10-07T04:23:40.144515+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 53.1,
-      "status": "Normal",
-      "updated_at": "2026-10-05T22:25:51.098594+00:00"
+      "vci_score": 21.4,
+      "status": "Severe Drought",
+      "updated_at": "2026-10-06T12:23:40.144515+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 58.1,
-      "status": "Normal",
-      "updated_at": "2026-10-06T22:25:51.098594+00:00"
+      "vci_score": 29.3,
+      "status": "Severe Drought",
+      "updated_at": "2026-10-07T12:23:40.144515+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 25.1,
-      "status": "Severe Drought",
-      "updated_at": "2026-10-04T22:25:51.098594+00:00"
+      "vci_score": 45.6,
+      "status": "Moderate Drought",
+      "updated_at": "2026-10-07T12:23:40.144515+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 25.0,
-    "streamflow_trend": "Stable",
+    "forest_cover_pct": 20.5,
+    "streamflow_trend": "Declining",
     "deforestation_alerts": 1,
-    "updated_at": "2026-10-03T22:25:51.098594+00:00"
+    "updated_at": "2026-10-03T12:23:40.144515+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 27,
+      "tracked_individuals": 18,
       "location_cluster": {
-        "latitude": -0.5223,
-        "longitude": 39.6949
+        "latitude": -0.9843,
+        "longitude": 39.6047
       },
-      "movement_status": "Migrating South",
-      "updated_at": "2026-10-06T18:25:51.098594+00:00"
+      "movement_status": "Foraging",
+      "updated_at": "2026-10-07T11:23:40.144515+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 69,
+      "tracked_individuals": 76,
       "location_cluster": {
-        "latitude": -1.2839,
-        "longitude": 40.4448
+        "latitude": -1.2339,
+        "longitude": 40.285
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-10-05T22:25:51.098594+00:00"
+      "updated_at": "2026-10-07T12:23:40.144515+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 937,
-    "average_price_kes": 44577,
-    "cold_chain_nodes_active": 15,
-    "solar_uptime_pct": 92.7,
-    "updated_at": "2026-10-06T22:25:51.098594+00:00"
+    "livestock_offtake_daily": 926,
+    "average_price_kes": 34223,
+    "cold_chain_nodes_active": 8,
+    "solar_uptime_pct": 92.5,
+    "updated_at": "2026-10-07T12:23:40.144515+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 16671199,
+    "ccri_grants_allocated_kes": 5871715,
     "cfa_restructuring_status": "Phase 1 Complete",
-    "active_community_forest_associations": 11,
-    "updated_at": "2026-09-19T22:25:51.098594+00:00"
+    "active_community_forest_associations": 18,
+    "updated_at": "2026-09-27T12:23:40.144515+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
-    "seasonal_forecast": "Favorable rains indicated by local flora indicators; prepare for planting.",
-    "community_sentiment": "Preparing Action",
-    "updated_at": "2026-09-19T22:25:51.098594+00:00"
+    "seasonal_forecast": "High likelihood of flash floods in lower basin; move livestock to higher ground.",
+    "community_sentiment": "Concerned (Drought)",
+    "updated_at": "2026-09-08T12:23:40.144515+00:00"
   }
 }
