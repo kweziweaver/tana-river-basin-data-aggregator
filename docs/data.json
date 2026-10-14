@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-10-13T22:22:33.507578+00:00",
+  "fetched_at": "2026-10-14T10:56:00.640421+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 3.27,
+      "water_level_m": 3.71,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 330.6,
+      "discharge_m3s": 371.3,
       "status": "Normal",
-      "updated_at": "2026-10-13T16:22:33.507578+00:00"
+      "updated_at": "2026-10-14T08:56:00.640421+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,9 +17,9 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 23.4,
-      "status": "Severe Drought",
-      "updated_at": "2026-10-12T22:22:33.507578+00:00"
+      "vci_score": 38.8,
+      "status": "Moderate Drought",
+      "updated_at": "2026-10-14T10:56:00.640421+00:00"
     },
     {
       "county": "Tana River County",
@@ -27,65 +27,65 @@
       "longitude": 40.0,
       "vci_score": 22.5,
       "status": "Severe Drought",
-      "updated_at": "2026-10-13T22:22:33.507578+00:00"
+      "updated_at": "2026-10-12T10:56:00.640421+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 59.0,
-      "status": "Normal",
-      "updated_at": "2026-10-13T22:22:33.507578+00:00"
+      "vci_score": 32.5,
+      "status": "Severe Drought",
+      "updated_at": "2026-10-14T10:56:00.640421+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 17.4,
-    "streamflow_trend": "Declining",
-    "deforestation_alerts": 4,
-    "updated_at": "2026-10-11T22:22:33.507578+00:00"
+    "forest_cover_pct": 21.8,
+    "streamflow_trend": "Improving",
+    "deforestation_alerts": 3,
+    "updated_at": "2026-10-11T10:56:00.640421+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 27,
+      "tracked_individuals": 14,
       "location_cluster": {
-        "latitude": -0.9314,
-        "longitude": 39.7119
+        "latitude": -0.6421,
+        "longitude": 39.3899
       },
-      "movement_status": "Stationary",
-      "updated_at": "2026-10-13T17:22:33.507578+00:00"
+      "movement_status": "Foraging",
+      "updated_at": "2026-10-14T00:56:00.640421+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 41,
+      "tracked_individuals": 47,
       "location_cluster": {
-        "latitude": -1.2207,
-        "longitude": 40.2967
+        "latitude": -1.4824,
+        "longitude": 40.3797
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-10-11T22:22:33.507578+00:00"
+      "updated_at": "2026-10-13T10:56:00.640421+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 1057,
-    "average_price_kes": 36428,
-    "cold_chain_nodes_active": 13,
-    "solar_uptime_pct": 97.0,
-    "updated_at": "2026-10-13T22:22:33.507578+00:00"
+    "livestock_offtake_daily": 1127,
+    "average_price_kes": 31787,
+    "cold_chain_nodes_active": 14,
+    "solar_uptime_pct": 97.2,
+    "updated_at": "2026-10-14T10:56:00.640421+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 10829268,
-    "cfa_restructuring_status": "Phase 1 Complete",
-    "active_community_forest_associations": 21,
-    "updated_at": "2026-10-05T22:22:33.507578+00:00"
+    "ccri_grants_allocated_kes": 14909693,
+    "cfa_restructuring_status": "In Progress",
+    "active_community_forest_associations": 25,
+    "updated_at": "2026-10-01T10:56:00.640421+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
     "seasonal_forecast": "Favorable rains indicated by local flora indicators; prepare for planting.",
-    "community_sentiment": "Concerned (Drought)",
-    "updated_at": "2026-09-19T22:22:33.507578+00:00"
+    "community_sentiment": "Cautiously Optimistic",
+    "updated_at": "2026-09-24T10:56:00.640421+00:00"
   }
 }
