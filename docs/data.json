@@ -1,15 +1,15 @@
 {
-  "fetched_at": "2026-11-24T16:51:04.878655+00:00",
+  "fetched_at": "2026-11-25T01:57:42.556820+00:00",
   "river_flow": [
     {
       "station_name": "Garissa Bridge (WRA)",
       "latitude": -0.4532,
       "longitude": 39.6461,
-      "water_level_m": 4.47,
+      "water_level_m": 3.41,
       "flood_threshold_m": 4.5,
-      "discharge_m3s": 318.9,
+      "discharge_m3s": 442.3,
       "status": "Normal",
-      "updated_at": "2026-11-24T11:51:04.878655+00:00"
+      "updated_at": "2026-11-24T17:57:42.556820+00:00"
     }
   ],
   "vegetation_health": [
@@ -17,75 +17,75 @@
       "county": "Garissa County",
       "latitude": -0.45,
       "longitude": 39.65,
-      "vci_score": 36.9,
-      "status": "Moderate Drought",
-      "updated_at": "2026-11-22T16:51:04.878655+00:00"
+      "vci_score": 20.5,
+      "status": "Severe Drought",
+      "updated_at": "2026-11-25T01:57:42.556820+00:00"
     },
     {
       "county": "Tana River County",
       "latitude": -1.5,
       "longitude": 40.0,
-      "vci_score": 39.1,
+      "vci_score": 39.0,
       "status": "Moderate Drought",
-      "updated_at": "2026-11-22T16:51:04.878655+00:00"
+      "updated_at": "2026-11-24T01:57:42.556820+00:00"
     },
     {
       "county": "Kitui County",
       "latitude": -1.36,
       "longitude": 38.01,
-      "vci_score": 30.5,
-      "status": "Severe Drought",
-      "updated_at": "2026-11-24T16:51:04.878655+00:00"
+      "vci_score": 56.4,
+      "status": "Normal",
+      "updated_at": "2026-11-24T01:57:42.556820+00:00"
     }
   ],
   "headwater_health": {
     "region": "Upper Basin (Nyeri/Nyandarua)",
     "latitude": -0.41,
     "longitude": 36.95,
-    "forest_cover_pct": 19.9,
-    "streamflow_trend": "Declining",
-    "deforestation_alerts": 4,
-    "updated_at": "2026-11-19T16:51:04.878655+00:00"
+    "forest_cover_pct": 20.8,
+    "streamflow_trend": "Stable",
+    "deforestation_alerts": 1,
+    "updated_at": "2026-11-20T01:57:42.556820+00:00"
   },
   "biodiversity": [
     {
       "species": "Elephant (Route 13)",
-      "tracked_individuals": 25,
+      "tracked_individuals": 20,
       "location_cluster": {
-        "latitude": -0.8081,
-        "longitude": 39.686
+        "latitude": -0.5231,
+        "longitude": 39.678
       },
-      "movement_status": "Migrating South",
-      "updated_at": "2026-11-24T06:51:04.878655+00:00"
+      "movement_status": "Foraging",
+      "updated_at": "2026-11-24T22:57:42.556820+00:00"
     },
     {
       "species": "Hirola Antelope",
-      "tracked_individuals": 73,
+      "tracked_individuals": 70,
       "location_cluster": {
-        "latitude": -1.2343,
-        "longitude": 40.175
+        "latitude": -1.4112,
+        "longitude": 40.1399
       },
       "movement_status": "Grazing (Protected Area)",
-      "updated_at": "2026-11-22T16:51:04.878655+00:00"
+      "updated_at": "2026-11-23T01:57:42.556820+00:00"
     }
   ],
   "economic_value": {
-    "livestock_offtake_daily": 998,
-    "average_price_kes": 36552,
+    "livestock_offtake_daily": 608,
+    "average_price_kes": 34051,
     "cold_chain_nodes_active": 11,
-    "solar_uptime_pct": 92.8,
-    "updated_at": "2026-11-24T16:51:04.878655+00:00"
+    "solar_uptime_pct": 95.4,
+    "updated_at": "2026-11-25T01:57:42.556820+00:00"
   },
   "governance": {
-    "ccri_grants_allocated_kes": 5271303,
+    "ccri_grants_allocated_kes": 16862679,
     "cfa_restructuring_status": "Phase 1 Complete",
     "active_community_forest_associations": 21,
-    "updated_at": "2026-11-13T16:51:04.878655+00:00"
+    "updated_at": "2026-11-05T01:57:42.556820+00:00"
   },
   "warm_data": {
     "source": "Somali Indigenous Oracles (Council of Elders)",
-    "seasonal_forecast": "Delayed short rains expected; conserve dry-season grazing areas.",
+    "seasonal_forecast": "High likelihood of flash floods in lower basin; move livestock to higher ground.",
     "community_sentiment": "Concerned (Drought)",
-    "updated_at": "2026-10-31T16:51:04.878655+00:00"
+    "updated_at": "2026-10-30T01:57:42.556820+00:00"
   }
 }
